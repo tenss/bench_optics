@@ -1,0 +1,433 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Load the document class and packages                         %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{report}
+
+\usepackage{epsfig}            % to insert PostScript figures
+\graphicspath{ 
+  {figures/} 
+}
+
+%Change figure names
+\renewcommand{\figurename}{Fig}
+
+\usepackage[bf,footnotesize]{caption} % make captions small and label bold
+
+
+\addtocounter{chapter}{1} %Because starting at zero is silly
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\renewcommand{\thefigure}{\@arabic\c@figure}
+\makeatother
+
+\usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2.5cm]{geometry} 
+\usepackage{textcomp}          % To make nice degree symbols and others\usepackage[bf,footnotesize]{caption} % make captions small and label bold
+\usepackage{wrapfig}
+%to produce the clickable references along the left in Acroread. This
+%package must be included last. 
+\usepackage[ps2pdf,bookmarks=TRUE]{hyperref} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Hypertext references for Acrobat                             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+pdfauthor = {TENSS},
+pdftitle = {Optics Exercises},
+pdfkeywords = {optics, lenses, refraction, reflection, dispersion,
+  telescope, microscope},
+pdfcreator = {LaTeX with hyperref},
+pdfproducer = {dvips + ps2pdf}
+           }
+
+
+\begin{document}
+
+
+
+
+%set the number of sectioning levels 
+\setcounter{secnumdepth}{2}
+
+\begin{center}
+\textbf{\Large{Optics Bench Exercises}}
+\end{center}
+
+\section{Refraction and Dispersion}
+\subsection{Snell's Law}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{wrapfigure}{r}{42mm}
+\centering
+\includegraphics[width=2.5cm]{Snells_law2.eps}
+\label{fig:snell}
+\end{wrapfigure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Light is bent (refracted) when it crosses the interface between two
+media with different refractive indices. Light travels slower in a
+medium with a higher refractive index. The refractive index of air is
+1.0 and glass about 1.5. Snell's law (\ref{eq:snell}) tells us
+that the ratio of the sines of the angles of incidence is equal to the
+opposite ratio of the angles of refraction in the two media.
+
+\begin{equation}
+\label{eq:snell}
+\frac{\sin\Theta_1}{\sin\Theta_2} = \frac{n_2}{n_1}
+\end{equation}
+
+
+In the following exercises you will use Snell's law to calculate and
+explore how the path of a light beam is altered as it travels through
+different materials. 
+
+\subsubsection{1. Determining the exit angle of a light beam from a prism}
+Given a beam entering the prism at an angle of 45
+degrees, calculate the intermediate angles (\textbf{A} and \textbf{B})
+in order to calculate the exit angle, \textbf{C}. All angles are
+calculated with respect to the normal (the dashed grey line). Use a
+real prism and a laser to trace angles on a sheet of paper to verify
+your predictions.
+
+\begin{figure}[h]
+\center
+\includegraphics[width=3in]{prism.eps}
+\end{figure}
+
+\subsubsection{2. Determining a refractive index}
+Using the refractive index of air and the angles of refraction,
+calculate the refractive index of plastic. How does it compare with
+that of glass?\footnote{The class will share 4 plastic blocks
+  and 2 glass prisms. Groups should therefore take it in turns to
+  measure the refractive index (part 2) and work with the prisms
+  (parts 3 and 4)}
+
+\subsubsection{3. Determine the angle of total internal reflection}
+When light leaves a denser medium and re-enters the air, its angle
+with respect to the normal increases. At a certain \textit{critical
+  angle} (see Fig.~\ref{TIR}), light no longer leaves the denser
+medium but is reflected back. Measure the critical angle for glass
+using the prism. 
+
+\begin{figure}[h]
+\center
+\includegraphics[width=4in]{total-internal-reflection.eps}
+\caption{Green: refracted light leaving glass and entering air. Red:
+  at the critical angle of incidence ($\Theta_c$) the refracted light
+  leaves the glass at 90 degrees to the normal. At angles greater than
+$\Theta_c$ light no longer exits the glass but is reflected once it
+  reaches the air/glass interface.}
+\label{TIR}
+\end{figure}
+
+\subsubsection{4. Dispersion}
+Light of different wavelengths is refracted to different degrees. Cut
+a slit into the target card and illuminate it using the light guide. Can
+you observe evidence of this using a white light source and a prism?
+Which wavelengths are refracted most? 
+
+
+\clearpage
+\section{Image Formation}
+An imaging condition is defined as a situation where all light rays
+leaving one point (or region) arrive at some other defined point (or
+region) \textit{regardless of the angle of the ray}. This principle is
+illustrated in Fig.~\ref{onelens}, where the arrow on the left
+(denoted $z_1$) is imaged through a lens to form an inverted image
+(denoted $z_2$). Note that all light rays leaving the arrow head at
+$z_1$ converge onto the inverted image's arrow head at $z_2$. 
+
+
+\begin{figure}[h]
+\center
+\includegraphics[width=5in]{oneLens.eps}
+\caption{Simple image forming condition using one lens. Object $z_1$
+  is imaged using an ideal `thin lens' to form an inverted image at
+  $z_2$. The focal length of the lens is $f$. The rays drawn on the
+  diagram are the three fundamental rays. Note how the upper ray
+  passes through the focal point (denoted as a dot) on the right side
+  of the lens, the middle ray is unrefracted, and the lower ray passes
+  through the focal point on the left side of the lens. }
+\label{onelens}
+\end{figure}
+
+
+The distance from the object to the lens ($s_1$) and the lens to the
+image ($s_2$) can be related to the focal length ($f$) using the thin
+lens equation (\ref{eq:thinlens}). Magnification ($M$) can be
+expressed a number of ways (\ref{eq:mag}).
+
+\begin{equation}
+\frac{1}{f}=\frac{1}{s_1}+\frac{1}{s_2}
+\label{eq:thinlens}
+\end{equation}
+\begin{equation}
+M=\frac{z_2}{z_2}=-\frac{s_2}{s_1}=\frac{f}{f-s_1}
+\label{eq:mag}
+\end{equation}
+
+The following conventions are used:
+\begin{itemize}
+\item $f>0$ for convex lenses
+\item $f<0$ for concave lenses
+\item $s_1>0$ always
+\item $s_2>0$ for real images
+\item $s_2<0$ for virtual images
+\item Transverse distances above the optical axis are $>0$. Distance
+  below are negative. 
+\item $M=1$ means unitary magnification (the image is the same size as
+  the object). Negative numbers indicated an inverted image.
+\end{itemize}
+
+Using a single lens to image an object is known as \textbf{finite
+  conjugate} imaging because the image is paired (i.e. conjugated)
+with an object at a finite distance from it. In the following series
+of exercises you will use lens arrangements to image an LED.
+
+\subsubsection{1. Determine the focal length of a convex lens }
+You will use an LED as both a light source and an object to image. You
+will form the image on a white card. Progressively move the LED and
+screen away from the lens, maintaining $s_1=s_2$ ($M=-1$), until an
+image of the LED emitter is formed. What is the focal length of the
+lens? Image a distant light source (e.g. a light on the ceiling) at
+what distance does the image form? Why?
+
+% frac{1}{f}=frac{2}{s}
+% 
+\subsubsection{2. Magnifying the image}
+Calculate the values of $s_1$ and $s_2$ which produce $M=-4$ when with
+a $f=100~mm$ lens. Measure the size of the LED image and so calculate
+the size of the LED emitter. Verify that an image can be formed at any
+distance from the LED simply by varying $s_1$ and $s_2$. 
+
+\subsubsection{3. Virtual images and infinite images}
+What happens when the LED distance ($s_1$) is at $f$ from the lens?
+What happens when $s_1<f$? So under what conditions is it possible to
+form an image?
+
+\subsection{Combinations of lenses}
+A \textbf{real image} is formed on the opposite side of the lens to
+the sample. The allows the detector to be physically separated from
+the sample, consequently most optical devices use real images. A
+\textbf{virtual image} is formed on the same side of the lens as the
+object. Both magnifying glasses and microscope eyepieces use virtual
+images. 
+
+\subsubsection{Infinite Conjugate}
+The \textbf{infinite conjugate} refers to the situation where the
+object is located at a distance $1f$ from a lens
+(Fig.~\ref{infiniteConjugate}). In this scenario the rays leaving the
+lens are parallel and do not converge, so this is not an image forming
+condition. Instead, the image can be considered to be infinitely far
+away (hence the name). If a second lens is added, then an image can
+be formed. The magnification of the image is defined as
+(\ref{eq:magIC}). What useful feature does this arrangement have? 
+
+\begin{equation}
+M=-\frac{f_2}{f_1}
+\label{eq:magIC}
+\end{equation}
+
+\begin{figure}[h]
+\center
+\includegraphics[width=4.5in]{infiniteConjugate.eps}
+\caption{The infinite conjugate.}
+\label{infiniteConjugate}
+\end{figure}
+\subsubsection{1. Building the infinite conjugate}
+Set up two lenses on the rail to build the infinite conjugate. Place
+the LED at the $f$ of the first lens and a screen at the $f$ of the
+second. Measure the size of the image and calculate the size of the
+emitter. Verify the consequences of the infinite space by moving the
+second lens and keeping the screen at $f$ of the second lens. What
+happens to the image size?
+
+\subsubsection{2. Building a telescope}
+Draw an arrow on a coverslip to use as an target to image. Use a
+light-guide as a light source with which to illuminate the arrow from
+behind. Use two convex lenses (60~mm and 100~mm, it's up to you which
+you place nearer the light source and which you place further
+away). Put the coverslip at a distance of 150~mm from the first lens,
+between the lens and the light source. Separate the lenses by 250
+mm. Trace the ray diagram. Where will the image be formed? Is the
+image inverted?  Verify this experimentally. Move the lenses to alter
+their relative distance. In which condition is the image virtual? In
+which condition real and inverted? In which condition is no image
+formed?
+
+\subsection{Beam expanders}
+Lenses can be used to expand the diameter of a light beam. Expanders
+can be built using either two convex lenses (Fig.~\ref{beamExpander1})
+or a convex and concave lens (Fig.~\ref{beamExpander2}) in a
+configuration where the two focal points coincide. The degree to
+which a beam is expanded can be calculated as:
+\begin{equation}
+\frac{d_2}{d_1}=\frac{f_2}{f_1}
+\label{eq:beamExp}
+\end{equation}
+
+\begin{figure}[h]
+\center
+\includegraphics[width=4.5in]{beamExpander1.eps}
+\caption{Beam expander with two convex lenses.}
+\label{beamExpander1}
+\end{figure}
+
+\begin{figure}[h]
+\center
+\includegraphics[width=4.5in]{beamExpander2.eps}
+\caption{Beam expander with one convex and one concave lens.}
+\label{beamExpander2}
+\end{figure}
+
+\subsubsection{Aligning the lenses}
+You will use a laser as a light source. The procedure to align the
+laser and lenses will be explained on the board.
+
+\subsubsection{Experimenting with beam expanders}
+Play with different lens combinations in the two configurations shown in
+Figs.~\ref{beamExpander1} and \ref{beamExpander2}. Make sure that the
+two focal points coincide by checking that the exit beam is
+collimated (i.e. light rays are parallel so beam diameter is constant
+over long distances). Measure the size of the expanded beam and so
+calculate size of the unexpanded beam. What happens if the lenses are
+closer together or further apart?
+
+\clearpage
+\subsection{Composite optical elements}
+Many complex optical elements such as objectives or eyepieces
+(Fig~\ref{composite}) are built by combining multiple lenses in close
+proximity. To experiment with this you will first construct a beam
+expander ($f_1$=60~mm lens and a $f_2$=300~mm). Light leaving the beam
+expander will be directed into a composite lens. Having the beam
+expanded will make it easier for you to determine the focal length of
+the composite elements you will build.
+\begin{figure}[h]
+\center
+\includegraphics[width=3.5in]{objectivesfigure1.eps}
+\includegraphics[width=2.8in]{eyepieces5.eps}
+\caption{The composite lens arrangements found in microscope
+  objectives and eyepieces.}
+\label{composite}
+\end{figure}
+
+To build a composite optical element simply place a $f$=200~mm lens and a
+$f$=100~mm adjacent to each other. What is the effective focal length
+of the pair? Verify that it approximates the following:
+
+\begin{equation}
+\frac{1}{f}=\frac{1}{f_1}+\frac{1}{f_2}
+\label{eq:beamFocalLength}
+\end{equation}
+
+\noindent
+Swap the $f$=100~mm lens for an $f$=-50~mm lens. Verify that the
+combined focal length is shorter.
+
+\subsection{Optics Challenge}
+Arrange 4 lenses so as to form a de-magnified, real, upright
+image. Hints: 
+\begin{itemize}
+\item Use one negative lens.
+\item Space will be a problem: the lenses will take up the whole rail
+  and so you will need to place the target and screen outside of the
+  rail. 
+\item Use the light-guide to illuminate your target to avoid it
+  becoming too dim. 
+\end{itemize}
+
+
+\clearpage
+\section{Illuminating the sample}
+Different samples are best illuminated in different ways. In transmission
+microscopy the sample is illuminated from the opposite side to which
+it is imaged. In fluorescence microscopy (which you will explore later
+in the course) the sample is illuminated from the same side, with the
+objective serving as the condenser. It is not efficient to illuminate
+the sample directly (with no intervening lenses) because light is
+emitted in all directions from the source but only a narrow range of
+ray angles reach the specimen. In the following two exercises you will
+build two different illumination systems: critical and K\"{o}hler. The
+exercises will work better if you use a laser to align the lenses
+before switching to the LED for imaging the sample. 
+
+
+\subsection{Critical illumination of a sample}
+Critical illumination uses two lenses to focus an image of a light
+source onto the specimen (Fig.~\ref{critIlum}). You will now setup
+critical illumination on your lens rail. Use an LED as the light
+source. Build the condenser using two lenses and place the sample at
+their focal point. The lens nearer the LED is known as the
+\textbf{collector lens} and the lens nearer the sample is known as the
+\textbf{condenser lens}. Use the 30 mm for the collector lens and the
+60 mm (convex) for the condenser lens. A suitable sample is a
+coverslip with thin lines drawn on with a marker. Place the sample at
+the focal point of the condenser lens. Use two more lenses to form an
+image of the specimen on a piece of card. The \textbf{objective lens}
+($f$=100~mm) follows the specimen, and finally the \textbf{tube lens}
+($f$=300~mm) is used to form an image. Set up the lenses and image the
+image the sample. What problem do you notice?
+
+Critical illumination can be set up using either a finite or an
+infinite conjugate image of the light source. A diaphragm (the
+`\textbf{aperture diaphragm}') can be placed between the collector and
+condenser lens, at the focal point of the second lens (the condenser
+lens) to stop down the range of angles reaching the sample. This
+allows the NA of the illuminant to be regulated, providing control
+over the resolution, contrast, and depth of field. Add the aperture
+diaphragm and observe the effect of regulating the aperture on your
+sample image. Does the area illuminated alter when the diaphragm is
+closed down?
+
+\begin{figure}[h]
+\center
+\includegraphics[width=5in]{Critical_Illumination.eps}
+\caption{A simple critical illumination set up for visual microscopy.}
+\label{critIlum}
+\end{figure}
+
+
+\subsection{K\"{o}hler Illumination}
+K\"{o}hler illumination is an important and commonly used technique in
+light microscopy, as it provides even illumination of the sample
+whilst ensuring the light source (e.g. the bulb filament) is not
+visible. This is achieved by adding a third lens (you will use a
+$f$=100) so that the image of the filament doesn't appear on the
+sample but on the aperture diaphragm (which is the diaphragm located
+immediately before the condenser lens). This arrangement not only
+permits uniform illumination but also allows a second diaphragm to be
+added. This \textbf{field diaphragm} is imaged onto the sample and so
+provides a means of regulating the area of illumination. In summary,
+whilst an image of the filament is still formed, it occurs at a
+different plane to the image formed by the sample. Consequently, when
+observing the sample the light source image is out of focus.
+
+You will now convert the critical illumination to K\"{o}hler
+illumination.  The components will be arranged in the following order:
+\begin{enumerate}
+\item Collector lens ($f$=30)
+\item Field diaphragm
+\item Field lens ($f$=100)
+\item Aperture diaphragm
+\item Condenser lens ($f$=60)
+\item The objective and tube lenses will be as before. 
+\end{enumerate}
+
+Again, you will place the LED at one focal length before the collector
+lens and the sample at the focal length of the condenser lens. The
+arrangement of the components is shown in Fig.~\ref{koehler}. Verify
+that you can alter the depth of field by obtaining a second coverslip
+and drawing a differet target on it. Stack this alongside the original
+sample and vary the sizes of the diaphragms to observe the effects. 
+
+
+\begin{figure}[h]
+\center
+\includegraphics[width=5in]{koehler.eps}
+\caption{K\"{o}hler Illumination}
+\label{koehler}
+\end{figure}
+
+
+
+
+\end{document}
