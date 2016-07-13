@@ -54,13 +54,14 @@ pdfproducer = {dvips + ps2pdf}
 \end{center}
 
 \section{Introduction}
-These exercises are designed to teach the basic principles of image formation and optics. 
+These exercises are designed to teach the basic principles of optics and image formation.
 The exercises are aimed at microscope users who want to learn more about their equipment
 \footnote{This document was originally written by Francesca Anselmi for a CSHL graduate course.
 It was then modified for use at TENSS (www.tenss.ro) by Priyanka Gupta and Adriana Dabacan. 
 The present version was created in 2016 by Rob Campbell for an imaging course at the Biozentrum, Basel.}.
 The goal of the exercises is to nurture an understanding of image formation, conjugate planes, and how multiple lenses interact in simple optical set ups. 
-The exercises work best with no more than three people per group.
+This hand-out is not standalone and is intended to be delivered alongside a suitable lecture on the topic.
+Exercises work best with no more than three people per group.
 It is helpful to have the free \textbf{ray optics simulator} from the Google Play store running on a computer when going through the exercises. 
 
 \section{Parts list}
@@ -168,9 +169,17 @@ The following conventions are used:
   the object). Negative numbers indicated an inverted image.
 \end{itemize}
 
-Using a single lens to image an object is known as \textbf{finite conjugate} imaging because the image is paired (i.e. conjugated) with an object at a finite distance from it.
-The image plane and sample are \texbf{conjugate planes}.
-In the following series of exercises you will use lens arrangements to image an LED.
+First of all, you should practice drawing ray diagrams by hand. 
+You will need to do this later to explain what you observe on the bench.
+Make your diagram big, use all of an A4 sheet of paper. 
+By convention, the object is is an upright arrow rather than a grey mouse.
+Draw the three cardinal rays:
+\begin{itemize}
+\item The ray parallel to the optical axis goes through $f$ on the image side.
+\item The ray that passes through the centre of the lens travels undeflected.
+\item Finally, the ray that goes through $f$ on the object side leaves the lens parallel to the optical axis on the image side. 
+\end{itemize}
+
 
 \subsubsection{1. Determine the focal length of a convex lens }
 The LED will serve as a light source and an object that can be imaged. 
@@ -182,6 +191,10 @@ Power the LED (remembering to use the current-limiting resistor).
 Choose a lens with a focal length of about $f=100~mm$. 
 Attach the lens to a lens holder using the lens wrench and a retaining ring (this should already be in the lens holder).
 Mount the lens on another carriage and attach to the rail. 
+Using a single lens to image an object is known as \textbf{finite conjugate} imaging because the image is paired (i.e. conjugated) with an object at a finite distance from it.
+The image plane and sample are \texbf{conjugate planes}.
+
+
 
 \begin{itemize}
 \item A real image is not formed when the lens is closer then $1f$ to the sample (in this case the LED). 
@@ -203,8 +216,6 @@ Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
  $s_o$  &  $s_i$  &  $f$  \\
 \hline
 \hline
- & & \\ \hline
- & & \\ \hline
  & & \\ \hline
  & & \\ \hline
  & & \\ \hline
@@ -233,16 +244,36 @@ Measure the size of the LED image and so calculate the size of the LED emitter.
 \item Remember the value of $s_i$ when $s_o=2f$? Therefore what is $M$ when $s_o=2f$?
 \end{itemize}
 
+What you have covered above relates to an important property of lenses: that they work the same both forwards and backwards.
+Recall the definition of an image-forming condition: \textbf{light rays leaving one point (or region) of the object arrive at some other defined point (or region)}.
+This is why no image was formed when the LED was at $s_o=f$, since rays leaving the lens are parallel do not converge on the other side. 
+However, you \textit{were} able to form an image at $s_i=f$ when the object was very far away. 
+The ray diagrams of these two conditions are \textit{identical}--the only difference is that the object is at $1f$ in the first case and at infinity in the second case.
 
-\subsubsection{3. Virtual images and infinite images}
-What happens when the LED distance ($s_o$) is at $f$ from the lens?
-What happens when $s_o<f$? 
-So what would you need to do to still form an image on a sheet of paper? 
+\subsubsection{3. Virtual images}
+At distances $s_o<f$, you were unable to form an image of the sample on the card because the rays emerging from the other side \textit{diverged}.
+\begin{itemize}
+\item Place the LED $150~mm$ from a $300~mm$ lens. 
+\item See how the light diverges coming out of the lens. 
+\item Draw the ray diagram for this scenario: Place an object at $f=200~mm$.
+Draw the ray that leaves the tip of the object and continues through the middle of the lens. 
+Draw the ray that travels parallel to the optical axis and goes through $1f$ on the other side.
+See how these rays diverge. 
+\end{itemize}
 
+It would seem that no image is formed yet, surprisingly, a \textit{virtual image} is formed on the same side of the lens as the object. 
+This may sound like a peculiar concept, but you are already familiar with virtual images as this is how you see images in flat  mirrors (Fig.~/ref{fig:mirror}). 
+The extended rays in the case of the mirror can be created from the \textit{diverging} rays from the object. 
+In the case of the the lens at $s_o<f$ we also have diverging rays and so can also draw extended rays as we did for the mirror. 
+Add the extended rays to your ray diagram. Where do they converge? What does this tell you about the magnification of the virtual image?
+\begin{figure}[h]
+\center
+\includegraphics{virtual_image_mirr.eps}
+\caption{A virtual image of the bottle is created on the far side of the mirror. 
+This is described by the dotted lines which are `extended rays' that are used to form the virtual image. }
+\label{fig:mirror}
+\end{figure}
 
-\clearpage
-
-\subsection{Combinations of lenses}
 A \textbf{real image} is formed on the opposite side of the lens to the sample. 
 This allows the detector to be physically separated from the sample, which is rather useful.
 As a result, most optical devices use real images. 
@@ -250,10 +281,11 @@ A \textbf{virtual image} is formed on the \textit{same} side of the lens as the 
 Both magnifying glasses and microscope eyepieces use virtual images. 
 
 
-You will now learn about telescopes and beam expanders.
-Beam expanders are critical for building a scanning microscope.
+\clearpage
 
-\subsubsection{Infinite Conjugate}
+\subsection{Infinite Conjugate}
+You will now explore telescopes and beam expanders.
+Beam expanders are critical for building a scanning microscope.
 The \textbf{infinite conjugate} refers to the situation where the
 object is located at a distance of $1f$ from a lens
 (Fig.~\ref{infiniteConjugate}). In this scenario the rays leaving the
