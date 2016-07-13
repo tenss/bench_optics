@@ -61,6 +61,7 @@ It was then modified for use at TENSS (www.tenss.ro) by Priyanka Gupta and Adria
 The present version was created in 2016 by Rob Campbell for an imaging course at the Biozentrum, Basel.}.
 The goal of the exercises is to nurture an understanding of image formation, conjugate planes, and how multiple lenses interact in simple optical set ups. 
 The exercises work best with no more than three people per group.
+It is helpful to have the free \textbf{ray optics simulator} from the Google Play store running on a computer when going through the exercises. 
 
 \section{Parts list}
 It is possible to carry out the practicals with a variety of different lenses and equipment. 
@@ -104,7 +105,7 @@ A razor blade and very fine polishing paper work for this.
 \item Slides to image. Golgi stained brain slices work well. 
 Failing that, you could by a `toy' slide kit like that supplied by Celestron. 
 Electron microscopy grids of known pitch might be useful but aren't explicitly used in these exercises.
-\item A ruler or tape measure. At least 30 cm.
+\item A tape measure. 
 \end{itemize}
 
 \subsubsection{Tools}
@@ -167,22 +168,39 @@ The following conventions are used:
   the object). Negative numbers indicated an inverted image.
 \end{itemize}
 
-Using a single lens to image an object is known as \textbf{finite
-  conjugate} imaging because the image is paired (i.e. conjugated)
-with an object at a finite distance from it. In the following series
-of exercises you will use lens arrangements to image an LED.
+Using a single lens to image an object is known as \textbf{finite conjugate} imaging because the image is paired (i.e. conjugated) with an object at a finite distance from it.
+The image plane and sample are \texbf{conjugate planes}.
+In the following series of exercises you will use lens arrangements to image an LED.
 
 \subsubsection{1. Determine the focal length of a convex lens }
-You will use an LED as both a light source and an object to image. 
-You will vary the distance between the lens and measure how far away the image of the LED is formed. 
-Using equation~\ref{eq:thinlens}, you can calculate $f$. 
-Do this for several values of $s_o$
+The LED will serve as a light source and an object that can be imaged. 
+You will be able to form an image of the LED emitter.
+Attach a post holder to a rail carriage and place this on the rail. 
+Place the LED in the SM1 holder and attach this to a cage plate and mount this on a post. 
+Mount the post to your post-holder and place the LED at one end of the rail.
+Power the LED (remembering to use the current-limiting resistor). 
+Choose a lens with a focal length of about $f=100~mm$. 
+Attach the lens to a lens holder using the lens wrench and a retaining ring (this should already be in the lens holder).
+Mount the lens on another carriage and attach to the rail. 
+
+\begin{itemize}
+\item A real image is not formed when the lens is closer then $1f$ to the sample (in this case the LED). 
+Place the lens $<1f$ from the LED and use a piece of card on the other side of the lens to verify that no image is formed at any distance from the lens.
+Why is no image formed? Hint: what are the rays doing as they come out of the lens? 
+\item What happens to the rays at distances greater than $1f$? 
+\item Can an image be formed if the lens is $>1f$ from the LED? 
+Verify this: place a card very far from the LED (e.g. at $20f$) and slowly move the lens away from the LED. 
+What is the distance between the LED and the lens at which you see an image? 
+\item Vary the distance between the lens and the LED and measure how far away the image of the LED is formed. 
+Fill in the table below. 
+Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
+\item What is the value of $s_i$ when $s_o=2$?
+\end{itemize}
 
 \vspace{2em}
-
 \begin{tabular}{| p{1cm} | p{1cm} | p{1cm} |}
 \hline
- $s_o$  &  $s_o$  &  $s_f$  \\
+ $s_o$  &  $s_i$  &  $f$  \\
 \hline
 \hline
  & & \\ \hline
@@ -193,16 +211,27 @@ Do this for several values of $s_o$
 \end{tabular}
 
 
-\vspace{2em}
-Draw the ray diagram (as in Fig~\ref{fig:imageforming}) for the smallest and largest values of $s_o$ that you used. 
-Note how the angles on the object and image sides of the lens change.
-Image a distant light source (e.g. a light on the ceiling) at what distance does the image form? Why (think about the angle of the incoming light)?
-
-
 \subsubsection{2. Magnifying the image}
-Calculate the values of $s_o$ and $s_i$ which produce $M=-4$ (remember, negative means inverted) for a $f=100~mm$ lens. 
+As you probably noticed, the size of the image of the LED emitter varied with $s_o$.
+A lens produces images of different magnifications depending on $s_o$; an image can always be formed when $s_o>f$. 
+To begin thinking about magnification, hand-draw the ray diagram (as in Fig~\ref{fig:imageforming}) for the smallest and largest values of $s_o$ that you used above. 
+Note how the angles on the object and image sides of the lens change.
+We will now explore how magnification can be explained by the angle at which light comes into focus to form an image. 
+
+\begin{itemize}
+\item Place a card in the hard holder and position the $f=100~mm$ lens 100~mm from the card. 
+Point the rail out of the window and verify that an image is formed at $1f$. 
+\item Repeat with the $f=300~mm$ lens. What do you notice about the image? 
+\item Can you draw ray diagrams for these two lenses that explain what you see?
+Hint: Light from each point in your distant object arrives as (effectively) parallel rays. 
+Light from different regions comes in at different \textit{angles}. 
+Try drawing two sets of incoming parallel rays: one that comes in on-axis and one that comes in at an angle. 
+It might be easier to do this with the Ray Optics Simulator program.
+\item Go back to the lens and LED.
+Calculate the values of $s_o$ and $s_i$ which produce $M=-4$ (remember, negative just means inverted) for a $f=100~mm$ lens. 
 Measure the size of the LED image and so calculate the size of the LED emitter. 
-Verify that an image can be formed at any distance from the LED simply by varying $s_o$ and $s_i$. 
+\item Remember the value of $s_i$ when $s_o=2f$? Therefore what is $M$ when $s_o=2f$?
+\end{itemize}
 
 
 \subsubsection{3. Virtual images and infinite images}
