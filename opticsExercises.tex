@@ -333,17 +333,14 @@ A \textbf{virtual image} is formed on the \textit{same} side of the lens as the 
 \clearpage
 
 \subsection{Infinite Conjugate}
-You will now explore telescopes and beam expanders.
-Beam expanders are critical for building a scanning microscope.
-The \textbf{infinite conjugate} refers to the situation where the
-object is located at a distance of $1f$ from a lens
-(Fig.~\ref{infiniteConjugate}). In this scenario the rays leaving the
-lens are parallel and do not converge, so this is not an image forming
-condition. Instead, the image can be considered to be infinitely far
-away (hence the name). If a second lens is added, then an image can
-be formed. The magnification of the image is defined as
-(Eq.~\ref{eq:magIC}). 
-What useful feature does this arrangement have? 
+The \textbf{infinite conjugate} refers to the situation where the object is located at a distance of $1f$ from a lens (Fig.~\ref{infiniteConjugate}). 
+In this scenario the rays leaving the lens are parallel and do not converge, so this is not an image forming condition. 
+Instead, the image can be considered to be infinitely far away (hence the name). 
+If a second lens is added, then an image can be formed. 
+The magnification of the image is defined as Eq.~\ref{eq:magIC}. 
+This arrangement is useful because the image is always formed at $1f$ from the second lens irrespective of the distance between the lenses.
+Most microscope objectives are designed to work in this configuration since it allows filters to be added into the infinite space without altering the location of the image plane. 
+Such objectives are known as `infinity corrected`, since they are designed to produce their best images with the sample at $1f$.
 
 \begin{equation}
 M=-\frac{f_2}{f_1}
@@ -356,27 +353,17 @@ M=-\frac{f_2}{f_1}
 \caption{The infinite conjugate.}
 \label{infiniteConjugate}
 \end{figure}
-\subsubsection{A. Building the infinite conjugate}
+
 \begin{itemize}
 \item Set up two lenses with different focal lengths on the rail to build the infinite conjugate. 
-Place the LED at the $f$ of the first lens and a screen at the $f$ of the second. 
+Place the LED at the $f$ of the first lens before placing the second lens. 
+\item Place a screen at the $f$ of the second and hold it in place with the post-mounted clip.
 \item Measure the size of the image and calculate the size of the emitter. 
-\item Verify the consequences of the infinite space by moving the second lens and keeping the screen at $f$ of the second lens. 
+\item Verify the consequences of the infinite space by moving the second lens and maintaining the screen at $f$ of the second lens. 
 What happens to the image size?
-\item Verify Eq.~\ref{eq:magIC} by exploring what happens when lenses of different focal lengths are used. 
-\end{itemize}
-
-
-\subsubsection{B. Building a telescope}
-\begin{itemize}
-\item Draw an arrow on a coverslip to use as an target to image. 
-\item Use a light-guide as a light source with which to illuminate the arrow from behind. 
-Use two convex lenses (60~mm and 100~mm, it's up to you which you place nearer the light source and which you place further away). 
-\item Put the coverslip at a distance of 150~mm from the first lens, between the lens and the light source. 
-Separate the lenses by 250~mm. 
-\item Trace the ray diagram. Where will the image be formed? Is the image inverted?  Verify this experimentally. 
-\item Move the lenses to alter their relative distance. In which condition is the image virtual? In
-which condition real and inverted? In which condition is no image formed?
+\item Swap the first lens with one of a different focal length. 
+Verify that the image size changes in the manner in which you expect.
+Hint: the easiest way of doing this to place the screen at the far end of the rail, the second lens $1f$ from the screen, then swap the first lens and move it back and forth to focus. 
 \end{itemize}
 
 
@@ -404,22 +391,53 @@ The degree to which a beam is expanded can be calculated as:
 \label{beamExpander2}
 \end{figure}
 
-\subsubsection{Aligning the lenses}
-You will use a laser as a light source.
-The procedure to align the laser and lenses will be explained on the board.
+To explore beam expanders you will you will use a laser as a light source instead of an LED. 
+This is because the above lens arrangements assume collimated (parallel rays) entering the system. 
+Clamp your laser pointer to the top of a post using the RA90 post clamp. 
+Place the pointer at one end of the rail and align it such that it points straight down the rail to the other end. 
+To assist with alignment, place a close iris at the other end of the rail to act as a target.
+You can clamp the laser power button with the RA90 to keep the pointer on. 
+Switch it off when not using it to conserve batteries. 
+No you're ready to build some expanders:
 
-\subsubsection{Experimenting with beam expanders}
 \begin{itemize}
-\item Construct a beam expander using to convex lenses to expand the beam by at least a factor of three. 
+\item Construct a beam expander using two convex lenses to expand the beam by at least a factor of three. 
 Make sure that the two focal points coincide by checking that the exit beam is collimated
  (i.e. light rays are parallel so beam diameter is constant over long distances). 
+\item The beam will converge or diverge if the lenses are not at the sum of their focal lengths. 
+Verify this.
 \item Measure the size of the expanded beam and so calculate size of the unexpanded beam.
-\item Swap out one of the lenses with different convex lens and verify that the expansion factor changes. 
-\item What happens if the lenses are closer together or further apart than the sum of their focal lengths?
-\item Construct a beam expander using a concave and convex lens. What advantages does this arrangement have?
+\item Swap out one of the lenses with a different convex lens and verify that the expansion factor changes. 
+\item Construct a beam expander using a concave and convex lens. What advantages might this arrangement have?
 \end{itemize}
 
+Finally, build a beam expander to yield the maximum magnification your optics kit allows. 
+What is this magnification?
+The beam expander you have built also goes by another common name. 
+What is it? 
+Hint: think about what happens to beams that do not travel on-axis (Fig.~\ref{fig:telescope}).
+Once you've figured it out, remove the laser pointer and use your device. 
+\begin{figure}[h]
+\center
+\includegraphics[width=4.5in]{telescope_ray_diag.eps}
+\caption{A beam expander composed of an $f=400~mm$ lens and an $f=40~mm$ lens. 
+In addition to the collimated beam arriving on-axis, two off-axis beams are shown.}
+\label{fig:telescope}
+\end{figure}
+
 \clearpage
+
+\subsubsection{B. Building a telescope}
+\begin{itemize}
+\item Draw an arrow on a coverslip to use as an target to image. 
+\item Use a light-guide as a light source with which to illuminate the arrow from behind. 
+Use two convex lenses (60~mm and 100~mm, it's up to you which you place nearer the light source and which you place further away). 
+\item Put the coverslip at a distance of 150~mm from the first lens, between the lens and the light source. 
+Separate the lenses by 250~mm. 
+\item Trace the ray diagram. Where will the image be formed? Is the image inverted?  Verify this experimentally. 
+\item Move the lenses to alter their relative distance. In which condition is the image virtual? In
+which condition real and inverted? In which condition is no image formed?
+\end{itemize}
 
 \subsection{Composite optical elements}
 Many complex optical elements such as objectives or eyepieces (Fig~\ref{composite}) are built by combining multiple lenses in close proximity. 
