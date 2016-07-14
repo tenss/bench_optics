@@ -128,8 +128,8 @@ In addition to the above, you will need the following items that can be shared a
 
 \section{Image Formation}
 An image is formed when all light rays leaving one point (or region) of the object arrive at some other defined point (or region) \textit{regardless of the angle of the ray}. 
-This is illustrated in Fig.~\ref{fig:imageforming}, where the grey mouse on the left is imaged through a lens to form an inverted image, i.e. the green mouse on the right. 
-All light rays leaving the grey mouse’s left ear converge onto the inverted image's left ear. 
+This is illustrated in Fig.~\ref{fig:imageforming}, where the grey mouse on the left is imaged through a lens to form an inverted image: the green mouse on the right. 
+All light rays leaving the grey mouse's left ear converge onto the inverted image's left ear. 
 When we put a sheet of paper in the image plane, we see points on the paper illuminated by rays coming from corresponding points in the object. 
 
 
@@ -144,33 +144,17 @@ The upper ray (parallel to the optical axis on the left) passes through the foca
 \label{fig:imageforming}
 \end{figure}
 
-As the distance between the object and lens ($s_o$) is varied, the distance between the lens and image ($s_i$) also changes. This relationship is determined by the lens foca length ($f$) using the thin lens equation.
+As the distance between the object and lens ($s_o$) is varied, the distance between the lens and image ($s_i$) also changes. This relationship is determined by the lens focal length ($f$) using the thin lens equation.
 
 \begin{equation}
 \frac{1}{s_o} + \frac{1}{s_i} = \frac{1}{f}
 \label{eq:thinlens}
 \end{equation}
 
-Notice that in Fig.~\ref{fig:imageforming}, the image is smaller than the object. The magnification of a lens is calculated as follows:
+The following conventions are used: $f>0$ for convex lenses, $f<0$ for concave lenses, $s_o$ is always $>0$, $s_i>0$ for real images, and $s_i<0$ for virtual images.
+Transverse distances above the optical axis are $>0$. Distance below are negative. 
 
-\begin{equation}
-M = \frac{h_i}{h_o} = -\frac{s_i}{s_o} = \frac{f}{f-s_o}
-\label{eq:mag}
-\end{equation}
-
-The following conventions are used:
-\begin{itemize}
-\item $f>0$ for convex lenses
-\item $f<0$ for concave lenses
-\item $s_o>0$ always
-\item $s_i>0$ for real images
-\item $s_i<0$ for virtual images
-\item Transverse distances above the optical axis are $>0$. Distance
-  below are negative. 
-\item $M=1$ means unitary magnification (the image is the same size as
-  the object). Negative numbers indicated an inverted image.
-\end{itemize}
-
+\vspace{2em}
 First of all, you should practice drawing ray diagrams by hand. 
 You will need to do this later to explain what you observe on the bench.
 Make your diagram big, use all of an A4 sheet of paper. 
@@ -183,31 +167,54 @@ Draw the three cardinal rays:
 \end{itemize}
 
 
+
+
+\clearpage
+
+
+
+
 \subsubsection{1. Determine the focal length of a convex lens }
-The LED will serve as a light source and an object that can be imaged. 
-You will be able to form an image of the LED emitter.
-Attach a post holder to a rail carriage and place this on the rail. 
-Place the LED in the SM1 holder and attach this to a cage plate and mount this on a post. 
-Mount the post to your post-holder and place the LED at one end of the rail.
-Power the LED (remembering to use the current-limiting resistor). 
-Choose a lens with a focal length of about $f=100~mm$. 
-Attach the lens to a lens holder using the lens wrench and a retaining ring (this should already be in the lens holder).
-Mount the lens on another carriage and attach to the rail. 
-Using a single lens to image an object is known as \textbf{finite conjugate} imaging because the image is paired (i.e. conjugated) with an object at a finite distance from it.
-The image plane and sample are \texbf{conjugate planes}.
-
-
+For the next few exercises you will use an LED as both a light source and an object to image.
+You will form various images of the LED emitter. 
+Your first task is to set up the LED on the optical rail:
 
 \begin{itemize}
-\item A real image is not formed when the lens is closer then $1f$ to the sample (in this case the LED). 
-Place the lens $<1f$ from the LED and use a piece of card on the other side of the lens to verify that no image is formed at any distance from the lens.
-Why is no image formed? Hint: what are the rays doing as they come out of the lens? 
-\item What happens to the rays at distances greater than $1f$? 
-\item Can an image be formed if the lens is $>1f$ from the LED? 
-Verify this: place a card very far from the LED (e.g. at $20f$) and slowly move the lens away from the LED. 
+\item Attach a post holder to a rail carriage (Fig.~\ref{fig:post}) and place this on the rail. 
+\item Place the LED in the SM1 holder and attach this to a cage plate (CP02) and mount this on a 50~mm post. 
+\item Mount the post to your post-holder and place the LED at one end of the rail.
+\item Power the LED (remembering to use the current-limiting resistor). 
+\end{itemize}
+
+
+\begin{figure}[h]
+\center
+\includegraphics[width=1in]{post_mounted.eps}
+\includegraphics[width=1in]{post_mounted_underside.eps}
+\caption{A post holder bolted to a rail carriage.}
+\label{fig:post}
+\end{figure}
+
+Now choose a lens with a focal length of about $f=100~mm$ and attach the lens to a lens holder using the lens wrench and a retaining ring (this should already be in the lens holder).
+Mount the lens on another carriage and attach to the rail next to the LED, allowing the light to go through the lens. 
+Try to get the LED aligned with the middle of the lens (precise alignment isn't important). 
+
+You will use this lens to form an image of the LED.
+This is called \textbf{finite conjugate} imaging because the image is paired (i.e. conjugated) with an object at a finite distance from it.
+The image and sample planes are said to be \textbf{conjugate planes}.
+You will be able to form an image on a piece of card or paper if the distance between the lens and LED ($s_o$) is $>1f$.
+The image will be of the LED emitter and usually looks like a small bright square, often with fine lines going across it. 
+If all you see is a blur, you have not formed an image.
+
+\begin{itemize}
+\item Place the lens $<1f$ from the LED and use a piece of card on the other side of the lens to verify that no image is formed at any distance from the lens.
+\item Why is no image formed? 
+Hint: draw a diagram with two rays: the undeflected ray and the ray coming out parallel with the optical axis and then going through $1f$ on the image side. 
+How do the rays behave after they have passed through the lens?
+\item Verify that an image is formed when the lens is $>1f$ from the LED: place a card very far from the LED (e.g. at $20f$) and slowly move the lens away from the LED. 
 What is the distance between the LED and the lens at which you see an image? 
-\item Vary the distance between the lens and the LED and measure how far away the image of the LED is formed. 
-Fill in the table below. 
+It should be just over $1f$.
+\item Measure $s_i$ for three values of $s_o$ and fill in the table below. 
 Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
 \item What is the value of $s_i$ when $s_o=2$?
 \end{itemize}
@@ -227,61 +234,101 @@ Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
 \subsubsection{2. Magnifying the image}
 As you probably noticed, the size of the image of the LED emitter varied with $s_o$.
 A lens produces images of different magnifications depending on $s_o$; an image can always be formed when $s_o>f$. 
-To begin thinking about magnification, hand-draw the ray diagram (as in Fig~\ref{fig:imageforming}) for the smallest and largest values of $s_o$ that you used above. 
-Note how the angles on the object and image sides of the lens change.
-We will now explore how magnification can be explained by the angle at which light comes into focus to form an image. 
+The magnification of a lens is calculated as follows:
+
+\begin{equation}
+M = \frac{h_i}{h_o} = -\frac{s_i}{s_o} = \frac{f}{f-s_o}
+\label{eq:mag}
+\end{equation}
+
+A value of $M=1$ would mean unitary magnification (the image is the same size as the object). 
+Negative numbers indicate an inverted image.
+
+To begin thinking about magnification, hand-draw the ray diagram (as in Fig.~\ref{fig:imageforming}) for the smallest and largest values of $s_o$ that you used above. 
+Make sure to give yourself plenty of room. 
+Hint: You will run out of paper if you use values too close $1f$.
+If you're stuck, choose $1.5f$ and $4f$.
+Note the changing angles of the rays and how they lead to different image sizes as $s_o$ changes. 
+We will now demonstrate magnification in a slightly different way:
 
 \begin{itemize}
-\item Place a card in the hard holder and position the $f=100~mm$ lens 100~mm from the card. 
-Point the rail out of the window and verify that an image is formed at $1f$. 
-\item Repeat with the $f=300~mm$ lens. What do you notice about the image? 
-\item Can you draw ray diagrams for these two lenses that explain what you see?
-Hint: Light from each point in your distant object arrives as (effectively) parallel rays. 
-Light from different regions comes in at different \textit{angles}. 
-Try drawing two sets of incoming parallel rays: one that comes in on-axis and one that comes in at an angle. 
-It might be easier to do this with the Ray Optics Simulator program.
+\item Mount a lens of about $f=60~mm$ in a holder and attach a post to it. 
+Go over to the window and form an image of the outside world on a piece of paper. 
+The image is formed at $1f$, as you already know. 
+\item Repeat with a lens of about $f=100~mm$ lens. 
+What two things do you notice about the image? 
+\item Fig.~\ref{fig:outside} models the situation you saw. Satisfy yourself that this provides a reasonable explanation. 
+If you wish, you can use the Chrome Ray Optics Simulator to make your own ray diagram of this imaging condition. 
 \item Go back to the lens and LED.
 Calculate the values of $s_o$ and $s_i$ which produce $M=-4$ (remember, negative just means inverted) for a $f=100~mm$ lens. 
 Measure the size of the LED image and so calculate the size of the LED emitter. 
+Hint: you don't need to set up the lens to yield exactly $M=-4$, just get it approximately there and measure $s_i$ and $s_o$.
 \item Remember the value of $s_i$ when $s_o=2f$? Therefore what is $M$ when $s_o=2f$?
 \end{itemize}
 
-What you have covered above relates to an important property of lenses: that they work the same both forwards and backwards.
+
+\begin{figure}[h]
+\center
+\includegraphics[width=2.5in]{image_forming_outside.eps}
+\caption{Images formed at $1f$ from light originating at infinity. 
+The top is a $f=50~mm$ lens and the bottom a $f=200~mm$ lens.
+Light from different regions of the object arrive in parallel rays that come in at different angles. 
+Each set of parallel rays come into focus at a point, satisfying the image-forming condition. 
+In the longer focal length lens, these points are further apart than in the shorter focal length lens. 
+Thus, the longer focal length lens magnifies the image to a greater degree. 
+ }
+\label{fig:outside}
+\end{figure}
+
+
+What you have covered above demonstrates an important property of lenses: that they work the same both forwards and backwards.
 Recall the definition of an image-forming condition: \textbf{light rays leaving one point (or region) of the object arrive at some other defined point (or region)}.
-This is why no image was formed when the LED was at $s_o=f$, since rays leaving the lens are parallel do not converge on the other side. 
+This is why no image was formed when the LED was at $s_o=f$, since rays leaving the lens are parallel and do not converge on the other side. 
 However, you \textit{were} able to form an image at $s_i=f$ when the object was very far away. 
 The ray diagrams of these two conditions are \textit{identical}--the only difference is that the object is at $1f$ in the first case and at infinity in the second case.
 
 \subsubsection{3. Virtual images}
 At distances $s_o<f$, you were unable to form an image of the sample on the card because the rays emerging from the other side \textit{diverged}.
 \begin{itemize}
-\item Place the LED $150~mm$ from a $300~mm$ lens. 
+\item Place the LED at $0.5f$ from a lens of your choice. 
 \item See how the light diverges coming out of the lens. 
-\item Draw the ray diagram for this scenario: Place an object at $f=200~mm$.
-Draw the ray that leaves the tip of the object and continues through the middle of the lens. 
+\item Draw the ray diagram for this scenario: Place an object at about $0.5f$.
+Draw the ray that leaves the tip of the object and continues undeflected through the middle of the lens. 
 Draw the ray that travels parallel to the optical axis and goes through $1f$ on the other side.
 See how these rays diverge. 
 \end{itemize}
 
 It would seem that no image is formed yet, surprisingly, a \textit{virtual image} is formed on the same side of the lens as the object. 
-This may sound like a peculiar concept, but you are already familiar with virtual images as this is how you see images in flat  mirrors (Fig.~/ref{fig:mirror}). 
+This may sound like a peculiar concept, but you are already familiar with virtual images as this is how you see images in flat mirrors (Fig.~\ref{fig:mirror}). 
 The extended rays in the case of the mirror can be created from the \textit{diverging} rays from the object. 
 In the case of the the lens at $s_o<f$ we also have diverging rays and so can also draw extended rays as we did for the mirror. 
-Add the extended rays to your ray diagram. Where do they converge? What does this tell you about the magnification of the virtual image?
+Add the extended rays to your ray diagram by continuing the rays on the object side of the lens until they converge. 
+Where do they converge? 
+What does this tell you about the magnification of the virtual image?
+You have made a magnifying glass!
+Verify this by using your lens to magnify your notebook (lenses of about $f=100~mm$ to $f=50~mm$ work best).
 \begin{figure}[h]
 \center
-\includegraphics{virtual_image_mirr.eps}
+\includegraphics[width=4in]{virtual_image_mirr.eps}
 \caption{A virtual image of the bottle is created on the far side of the mirror. 
 This is described by the dotted lines which are `extended rays' that are used to form the virtual image. }
 \label{fig:mirror}
 \end{figure}
 
-A \textbf{real image} is formed on the opposite side of the lens to the sample. 
-This allows the detector to be physically separated from the sample, which is rather useful.
-As a result, most optical devices use real images. 
-A \textbf{virtual image} is formed on the \textit{same} side of the lens as the object. 
-Both magnifying glasses and microscope eyepieces use virtual images. 
+A virtual image is also formed by a negative (concanve) lens, as shown in Fig.~\ref{fig:neglens}). 
+Examine the ray diagram of the negative lens. 
+What do you predict you will see if you attempt to use a negative lens as a magnifying glass?
+Verify this (the negative lens in your kit has a negative focal length number written on the box). 
+\begin{figure}[h]
+\center
+\includegraphics[width=3in]{negative_lens.eps}
+\caption{Ray diagram of a negative lens.}
+\label{fig:neglens}
+\end{figure}
 
+In summary, a \textbf{real image} is formed on the opposite side of the lens to the sample. 
+This allows the detector to be physically separated from the sample, which is rather useful.
+A \textbf{virtual image} is formed on the \textit{same} side of the lens as the object. 
 
 \clearpage
 
