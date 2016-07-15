@@ -87,9 +87,10 @@ Each set up comprises the following components:
 
 \subsubsection{Optics}
 \begin{itemize}
-\item LED Collector lens: 1'', $f=25 mm$ \textbf{LB1761}
+\item LED Collector lens: 1'', $f=25 mm$ \textbf{LB1761} or $f=30~mm$ \textbf{LA1805}
 \item Field Lens/Condenser Lens: 2'', $f=60 mm$ \textbf{LA1401} (two)
-\item $f=100 mm$ \textbf{LA1050}, $f=300 mm$ \textbf{LA1256}, $f=200 mm$ \textbf{LA1979}
+\item $f=100~mm$ \textbf{LA1050}, $f=300 mm$ \textbf{LA1256}, $f=200 mm$ \textbf{LA1979}
+\item $f=300~mm$ achromatic doublet \textbf{AC508-300-A} for demonstrating chromatic aberration reduction. 
 \item $f=-50 mm$ \textbf{LC1715}
 \item Olympus 4X, NA 0.1, 18.5 mm \textbf{WD RMS4X} and RMS to SM1 coupler (external SM1) \textbf{SM1A3}
 \end{itemize}
@@ -317,7 +318,7 @@ This is described by the dotted lines which are `extended rays' that are used to
 
 A virtual image is also formed by a negative (concanve) lens, as shown in Fig.~\ref{fig:neglens}). 
 Examine the ray diagram of the negative lens. 
-What do you predict you will see if you attempt to use a negative lens as a magnifying glass?
+What do you predict you will see if you look through a negative lens?
 Verify this (the negative lens in your kit has a negative focal length number written on the box). 
 \begin{figure}[h]
 \center
@@ -366,7 +367,7 @@ Verify that the image size changes in the manner in which you expect.
 Hint: the easiest way of doing this to place the screen at the far end of the rail, the second lens $1f$ from the screen, then swap the first lens and move it back and forth to focus. 
 \end{itemize}
 
-
+\clearpage
 \subsection{Beam expanders}
 Lenses can be used to expand the diameter of a light beam, such a laser.
 Expanders can be built using either two convex lenses (Fig.~\ref{beamExpander1}) or a convex and concave lens (Fig.~\ref{beamExpander2}). 
@@ -392,31 +393,36 @@ The degree to which a beam is expanded can be calculated as:
 \end{figure}
 
 To explore beam expanders you will you will use a laser as a light source instead of an LED. 
-This is because the above lens arrangements assume collimated (parallel rays) entering the system. 
-Clamp your laser pointer to the top of a post using the RA90 post clamp. 
-Place the pointer at one end of the rail and align it such that it points straight down the rail to the other end. 
-To assist with alignment, place a close iris at the other end of the rail to act as a target.
-You can clamp the laser power button with the RA90 to keep the pointer on. 
-Switch it off when not using it to conserve batteries. 
-No you're ready to build some expanders:
+This is because we want collimated light (parallel rays) entering the system. 
+You will first need to clamp your laser pointer and align it to the rail:
 
 \begin{itemize}
-\item Construct a beam expander using two convex lenses to expand the beam by at least a factor of three. 
-Make sure that the two focal points coincide by checking that the exit beam is collimated
- (i.e. light rays are parallel so beam diameter is constant over long distances). 
-\item The beam will converge or diverge if the lenses are not at the sum of their focal lengths. 
-Verify this.
-\item Measure the size of the expanded beam and so calculate size of the unexpanded beam.
-\item Swap out one of the lenses with a different convex lens and verify that the expansion factor changes. 
-\item Construct a beam expander using a concave and convex lens. What advantages might this arrangement have?
+\item Clamp your laser pointer to the top of a post using the RA90 post clamp. 
+\item Place the pointer at one end of the rail and align it such that it points straight down the rail to the other end. 
+\item Attach an iris to a post that is of suitable length to place the iris at the same height as the laser pointer. 
+\item Place the iris next to the laser pointer, close it and adjust the height of the laser pointer so the beam goes through the hole. 
+\item Move the iris to the other end of the rail. 
+\item Rotate the post the laser pointer sits on and change the clamping force until the beam goes through the iris. 
+Do not translate the laser pointer up and down.
+\item The beam should now be traveling more or less parallel with the rail. 
 \end{itemize}
 
-Finally, build a beam expander to yield the maximum magnification your optics kit allows. 
-What is this magnification?
-The beam expander you have built also goes by another common name. 
-What is it? 
+Now you're ready to build some expanders:
+
+\begin{itemize}
+\item Construct a beam expander using a $f=300~mm$ lens and an $f=100~mm$ lens.
+Make sure that the two focal points coincide by checking that the exit beam remains collimated (does not diverge or converge)
+at all distances from the second lens. 
+\item Measure the size of the expanded beam and so calculate size of the unexpanded beam.
+\item Swap out the $f=100~mm$ lens with the $f=-50~mm$ convex lens. Verify that the expanded beam diameter doubles. 
+What advantages does the negative lens add?
+\item Build a beam expander to yield the maximum magnification your optics kit allows (e.g. $f=300~mm$ and $f=30~mm$ to yield 10x). 
+The beam expander you have built also goes by another common name.  What is it? 
 Hint: think about what happens to beams that do not travel on-axis (Fig.~\ref{fig:telescope}).
 Once you've figured it out, remove the laser pointer and use your device. 
+\end{itemize}
+
+
 \begin{figure}[h]
 \center
 \includegraphics[width=4.5in]{telescope_ray_diag.eps}
@@ -427,46 +433,73 @@ In addition to the collimated beam arriving on-axis, two off-axis beams are show
 
 \clearpage
 
-\subsubsection{B. Building a telescope}
-\begin{itemize}
-\item Draw an arrow on a coverslip to use as an target to image. 
-\item Use a light-guide as a light source with which to illuminate the arrow from behind. 
-Use two convex lenses (60~mm and 100~mm, it's up to you which you place nearer the light source and which you place further away). 
-\item Put the coverslip at a distance of 150~mm from the first lens, between the lens and the light source. 
-Separate the lenses by 250~mm. 
-\item Trace the ray diagram. Where will the image be formed? Is the image inverted?  Verify this experimentally. 
-\item Move the lenses to alter their relative distance. In which condition is the image virtual? In
-which condition real and inverted? In which condition is no image formed?
-\end{itemize}
+
 
 \subsection{Composite optical elements}
-Many complex optical elements such as objectives or eyepieces (Fig~\ref{composite}) are built by combining multiple lenses in close proximity. 
-In objectives and eyepieces the light doesn't pass through a focal point, as in the telescopes you built. 
-The large numbers of optical elements are generally used to correct for optical abberations across the field of view. 
-To experiment with composite optical arrangements  you will first construct a beam expander ($f_1$=60~mm lens and a $f_2$=300~mm). 
-Light leaving the beam expander will be directed into a composite lens. 
-Having the beam expanded will make it easier for you to determine the focal length of the composite elements you will build.
+As you will have noticed above, image quality tends to be best in the centre of the field of view and decreases towards the edges. 
+A variety of aberrations (Fig.~\ref{fig:aberrations}) are at play and these tend to become progressively worse for light coming in at steeper angles to the optical axis.
 
 \begin{figure}[h]
 \center
-\includegraphics[width=3.5in]{objectivesfigure1.eps}
-\includegraphics[width=2.8in]{eyepieces5.eps}
-\caption{The composite lens arrangements found in microscope
-  objectives and eyepieces.}
-\label{composite}
+\includegraphics[width=6in]{aberrations.eps}
+\caption{The three most common optical aberrations. 
+Chromatic aberration sees light of different wavelengths coming into focus at different distances from the lens.
+Spherical aberration sees on-axis light coming into focus at different distances from the lens. 
+Coma is the situation where off-axis light does not come into focus in the same spot. }
+\label{fig:aberrations}
 \end{figure}
 
-To build a composite optical element simply place a $f$=200~mm lens and a $f$=100~mm adjacent to each other. 
-What is the effective focal length of the pair? Verify that it approximates the following:
+To correct for this, objectives and eyepieces (Fig.~\ref{fig:composite}) are built by combining multiple lenses in close proximity. 
+The purpose of these extra elements is to correct for aberrations given certain constraints. 
+For example, most microscope objectives assume the sample is at $1f$; further, they assume a particular immersion medium, presence of a coverslip, etc.
+Note that in objectives and eyepieces the light doesn't pass through a focal point within the device and so they can be considered to be a single complex lens.
 
+\begin{figure}[h]
+\center
+\includegraphics[width=2.8in]{objectivesfigure1.eps}
+\includegraphics[width=2.2in]{eyepieces5.eps}
+\includegraphics[width=2.2in]{Plossl.eps}
+\caption{The composite lens arrangements found in microscope
+  objectives (left) and eyepieces (middle).
+  The Pl\"{o}ssl eyepiece is composed of two sets of achromatic doublet lenses (bottom).}
+\label{fig:composite}
+\end{figure}
+
+
+Here we will experiment with a simple composite optical arrangement: the Pl\"{o}ssl eyepiece (Fig.~\ref{fig:composite}). 
+Pl\"{o}ssls are commonly used in amateur astronomy because they are not expensive and provide a relatively wide (50 degree) field of view that is of good 
+quality if the eyepiece is well made. 
+Pl\"{o}ssls also make suitable scan lenses for two photon microscopy\footnote{Negrean \& Mansvelder, 2014, PMID: 24877017}.
+You will now construct a Pl\"{o}ssl using two $f=60~mm$ singlet lenses.
+
+
+\begin{itemize}
+\item First construct a beam expander ($f_1$=30~mm lens and a $f_2$=300~mm). 
+The expanded beam will be directed into your eyepiece, which will make it easier to measure its focal length.
+\item Build the Pl\"ossl by placing the two $f=60~mm$ lenses as close as possible with their flat sides facing outwards. 
+You might need to move the post holders on the rail carriages to allow the lenses to meet.
+Since collimated light leaves your beam expander, you can place the Pl\"ossl at any distance from the $f=30~mm$ lens. 
+\item Verify that your Pl\"{o}ssl behaves more or less as expected: 
+Eq.~\ref{eq:compoundLensF} gives the distance between the middle of the compound lens and the focal point. 
+\item Separate your lens elements by about 15~mm and measure and measure the change in focal length.
+\end{itemize}
+
+The effective focal length of two thin lenses are separated in air by some distance $d$ is given by
 \begin{equation}
-\frac{1}{f}=\frac{1}{f_1}+\frac{1}{f_2}
-\label{eq:beamFocalLength}
+\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2} - \frac{d}{f_1f_2}
+\label{eq:compoundLensF}
 \end{equation}
 
-\noindent
-Swap the $f$=100~mm lens for an $f$=-50~mm lens. Verify that the
-combined focal length is shorter.
+A telescope built from two positive lenses is known Keplerian telescope. 
+A Galilean telescope uses a negative lens as the eyepiece and forms a non-inverted image.
+Build a Keplerian telescope using $f=300~mm$ singlet lens for the objective and a $30~mm$ lens for the eyepiece. 
+Look through it familiarise yourself with what the image looks like then replace the eyepiece with your Pl\"{o}ssl. 
+The magnification will similar, but the image quality should be better. 
+The apparent field of view should be wider and there will be substantially less pincushion distortion. 
+You will still see chromatic aberration. 
+If you have an achromatic $f=300~mm$ doublet, then you can swap this in and see the reduction in chromatic aberration and a sharper image. 
+Your telescope is just powerful enough to see the moons of Jupiter. 
+
 
 \subsection{Optics Challenge}
 Arrange 4 lenses so as to form a de-magnified, real, upright
@@ -484,24 +517,33 @@ image. Hints:
 
 \clearpage
 \section{Illuminating the sample}
-Different samples are best illuminated in different ways. In transmission
-microscopy the sample is illuminated from the opposite side to which
-it is imaged. In fluorescence microscopy (which you will explore later
-in the course) the sample is illuminated from the same side, with the
-objective serving as the condenser. It is not efficient to illuminate
-the sample directly (with no intervening lenses) because light is
-emitted in all directions from the source but only a narrow range of
-ray angles reach the specimen. In the following two exercises you will
-build two different illumination systems: critical and K\"{o}hler. The
-exercises will work better if you use a laser to align the lenses
-before switching to the LED for imaging the sample. 
+Different samples are best illuminated in different ways.
+In transmission microscopy the sample is illuminated from the opposite side to which it is imaged. 
+In fluorescence microscopy the sample is illuminated from the same side, with the objective also serving as the condenser. 
+It is not efficient to illuminate the sample directly (with no intervening lenses) because light is emitted in all directions from the source but only a narrow range of ray angles reach the specimen. 
+In the following two exercises you will build two different illumination systems: critical and K\"{o}hler. 
+The exercises may work better if you use a laser to align the lenses before switching to the LED for imaging the sample. 
+
+
+\subsubsection{B. Building a telescope}
+\begin{itemize}
+\item Draw an arrow on a coverslip to use as an target to image. 
+\item Use a light-guide as a light source with which to illuminate the arrow from behind. 
+Use two convex lenses (60~mm and 100~mm, it's up to you which you place nearer the light source and which you place further away). 
+\item Put the coverslip at a distance of 150~mm from the first lens, between the lens and the light source. 
+Separate the lenses by 250~mm. 
+\item Trace the ray diagram. Where will the image be formed? Is the image inverted?  Verify this experimentally. 
+\item Move the lenses to alter their relative distance. In which condition is the image virtual? In
+which condition real and inverted? In which condition is no image formed?
+\end{itemize}
 
 
 \subsection{Critical illumination of a sample}
-Critical illumination uses two lenses to focus an image of a light
-source onto the specimen (Fig.~\ref{critIlum}). You will now setup
-critical illumination on your lens rail. Use an LED as the light
-source. Build the condenser using two lenses and place the sample at
+TODO: one lens, then two
+In critical illumination the light source is focused onto the specimen (Fig.~\ref{critIlum}).
+This may be done with just one lens, although here we will do it with two. 
+Use an LED as the light source. 
+Build the condenser using two lenses and place the sample at
 their focal point. The lens nearer the LED is known as the
 \textbf{collector lens} and the lens nearer the sample is known as the
 \textbf{condenser lens}. Use the 30 mm for the collector lens and the
