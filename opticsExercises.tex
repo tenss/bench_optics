@@ -498,11 +498,10 @@ A telescope built from two positive lenses is known Keplerian telescope.
 A Galilean telescope uses a negative lens as the eyepiece and forms a non-inverted image.
 Build a Keplerian telescope using $f=300~mm$ singlet lens for the objective and a $30~mm$ lens for the eyepiece. 
 Look through it familiarise yourself with what the image looks like then replace the eyepiece with your Pl\"{o}ssl. 
-The magnification will similar, but the image quality should be better. 
-The apparent field of view should be wider and there will be substantially less pincushion distortion. 
+The magnification will be similar, but the image quality should be better: you'll get a wider apparent field of view and substantially less pincushion distortion. 
 You will still see chromatic aberration. 
-If you have an achromatic $f=300~mm$ doublet, then you can swap this in and see the reduction in chromatic aberration and a sharper image. 
-Your telescope is just powerful enough to see the moons of Jupiter. 
+If you have an achromatic $f=300~mm$ doublet, then you can use this as the objective to get a reduction in chromatic aberration and a sharper image. 
+Your telescope is powerful enough to see the moons of Jupiter. 
 
 
 \subsection{Optics Challenge}
@@ -529,46 +528,11 @@ In the following two exercises you will build two different illumination systems
 The exercises may work better if you use a laser to align the lenses before switching to the LED for imaging the sample. 
 
 
-\subsubsection{B. Building a telescope}
-\begin{itemize}
-\item Draw an arrow on a coverslip to use as an target to image. 
-\item Use a light-guide as a light source with which to illuminate the arrow from behind. 
-Use two convex lenses (60~mm and 100~mm, it's up to you which you place nearer the light source and which you place further away). 
-\item Put the coverslip at a distance of 150~mm from the first lens, between the lens and the light source. 
-Separate the lenses by 250~mm. 
-\item Trace the ray diagram. Where will the image be formed? Is the image inverted?  Verify this experimentally. 
-\item Move the lenses to alter their relative distance. In which condition is the image virtual? In
-which condition real and inverted? In which condition is no image formed?
-\end{itemize}
-
-
 \subsection{Critical illumination of a sample}
-TODO: one lens, then two
 In critical illumination the light source is focused onto the specimen (Fig.~\ref{critIlum}).
-This may be done with just one lens, although here we will do it with two. 
-Use an LED as the light source. 
-Build the condenser using two lenses and place the sample at
-their focal point. The lens nearer the LED is known as the
-\textbf{collector lens} and the lens nearer the sample is known as the
-\textbf{condenser lens}. Use the 30 mm for the collector lens and the
-60 mm (convex) for the condenser lens. A suitable sample is a
-coverslip with thin lines drawn on with a marker. Place the sample at
-the focal point of the condenser lens. Use two more lenses to form an
-image of the specimen on a piece of card. The \textbf{objective lens}
-($f$=100~mm) follows the specimen, and finally the \textbf{tube lens}
-($f$=300~mm) is used to form an image. Set up the lenses and image the
-image the sample. What problem do you notice?
+A suitable sample is a coverslip with thin lines drawn on with a marker or some other thin specimen slide.
+First you will set up critical illumination with one lens:
 
-Critical illumination can be set up using either a finite or an
-infinite conjugate image of the light source. A diaphragm (the
-`\textbf{aperture diaphragm}') can be placed between the collector and
-condenser lens, at the focal point of the second lens (the condenser
-lens) to stop down the range of angles reaching the sample. This
-allows the NA of the illuminant to be regulated, providing control
-over the resolution, contrast, and depth of field. Add the aperture
-diaphragm and observe the effect of regulating the aperture on your
-sample image. Does the area illuminated alter when the diaphragm is
-closed down?
 
 \begin{figure}[h]
 \center
@@ -578,11 +542,57 @@ closed down?
 \end{figure}
 
 
+\begin{itemize}
+\item Place the LED at one end of the rail and then put an $f=25~mm$ or $f=30~mm$ 1'' lens at $2f$ from the LED. 
+\item At $2f$ from the lens (where the image of the LED emitter is formed) place your sample.
+\item Place the 4x objective $50~mm$ away from the sample (this is $1f$).
+\item At about $150~mm$ from the objective place a $f=200~mm$ lens. This is known as the tube lens.
+\item Place a card at $1f$ from the tube lens. 
+\item Move the objective back and forth a small distance to focus and obtain an image. 
+\end{itemize}
+
+The above arrangement is a simple microscope. 
+What does the image look like? 
+What problem do you notice?
+Before we go on to address this problem, let's improve the illumination. 
+The LED collector lens is at $2f$ and so is losing a lot of light. 
+Replace the 1'' collection lens with two $f=60~mm$ lenses set up as an infinite conjugate system.
+The lens nearer the LED is known as the \textbf{collector lens} and is at $1f$ from the LED.
+The lens nearer the sample is known as the \textbf{condenser lens} and is at $1f$ from the sample. 
+What does your image look like now? 
+The image of the LED emitter should be the same size as before but will be brighter. 
+With the infinite conjugate system you built, it becomes possible to regulate the NA of the illumination:
+
+\begin{itemize}
+\item First of all, replace the collector lens with the 1'' $f=30~mm$ lens and place this at $1f$ from the LED. \textbf{TODO: can we do with 60 mm lens??}
+\item Place an open iris after the collector lens.
+\item Place the $f=60mm$ condenser lens after the iris. 
+\item Adjust you specimen and objective and form the image again. 
+\end{itemize}
+
+The LED emitter will be twice the size now and appear dimmer. 
+Change the size of the iris and observe what happens to the image. 
+Does the area illuminated alter when the diaphragm is closed down?
+By altering the NA of the illuminated light, the iris provides control over the resolution, contrast, and depth of field (Fig.~\ref{fig:critical_iris}).
+
+
+
+\begin{figure}[h]
+\center
+\includegraphics[width=2.8in]{critical_open_iris.eps}
+\includegraphics[width=2.8in]{critical_closed_iris.eps}
+\caption{}
+\label{fig:critical_iris}
+\end{figure}
+
+
+
+\clearpage
+
 \subsection{K\"{o}hler Illumination}
-K\"{o}hler illumination is an important and commonly used technique in
-light microscopy, as it provides even illumination of the sample
-whilst ensuring the light source (e.g. the bulb filament) is not
-visible. This is achieved by adding a third lens (you will use a
+K\"{o}hler illumination is an important and commonly used technique in light microscopy, as it provides even illumination of the sample whilst ensuring the light source (e.g. the bulb filament) is not visible. 
+
+This is achieved by adding a third lens (you will use a
 $f$=100) so that the image of the filament doesn't appear on the
 sample but on the aperture diaphragm (which is the diaphragm located
 immediately before the condenser lens). This arrangement not only
