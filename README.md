@@ -1,7 +1,6 @@
 ## Basic Bench Optics
-The repository contains the Mrsic-Flogel optics practical handout. 
-This is based on the [TENSS](http://www.tenss.ro/) basic [bench optics exercises](https://github.com/tenss/bench_optics). 
-You can find the latest PDF of the hand-out in the project's [Releases](https://github.com/BaselLaserMouse/bench_optics/releases).
+The repository contains the TENSS optics practical handout. 
+You can find the latest PDF of the hand-out in the project's [Releases](https://github.com/tenss/bench_optics/releases).
 
 ### Contributing
 The handout is written in Latex. 
