@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Load the document class and packages                         %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{report}
+\usepackage{epsfig}            % to insert PostScript figures
+\graphicspath{ 
+  {figures/} 
+}
+
+%Change figure names
+\renewcommand{\figurename}{Fig}
+
+\usepackage[bf,footnotesize]{caption} % make captions small and label bold
+
+
+\addtocounter{chapter}{1} %Because starting at zero is silly
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\renewcommand{\thefigure}{\@arabic\c@figure}
+\makeatother
+
+\usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2.5cm]{geometry} 
+\usepackage{textcomp}          % To make nice degree symbols and others\usepackage[bf,footnotesize]{caption} % make captions small and label bold
+\usepackage{wrapfig}
+%to produce the clickable references along the left in Acroread. This
+%package must be included last. 
+\usepackage[ps2pdf,bookmarks=TRUE]{hyperref} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Hypertext references for Acrobat                             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+pdfauthor = {TENSS},
+pdftitle = {Benchtop Scanning},
+pdfkeywords = {optics, lenses, refraction, reflection, dispersion,
+  telescope, microscope},
+pdfcreator = {LaTeX with hyperref},
+pdfproducer = {dvips + ps2pdf}
+           }
+
+
+\begin{document}
+
+
+
+
+%set the number of sectioning levels 
+\setcounter{secnumdepth}{2}
+
+\begin{center}
+\textbf{\Large{Benchtop Scanning}}
+\end{center}
+
+\section{Introduction}
+
+\subsection{Scanning microscopy}
+Widefield imaging uses lenses to form a real image of the sample which is magnified and imaged onto a CCD chip or viewed by eye. 
+In this scenario the sample is conjugate with the image plane. 
+In widefield microscopy the entire field of view is illuminated so a great deal of scattered light from outside of the focal plane ends up in the image plane. 
+Recall the definition of an image-forming condition: \textbf{light rays leaving one point (or region) of the object arrive at some other defined point (or region)}.
+Scattered photons are so defined because they arrive at the image plane at a location \textit{not conjugate} with where they originally came from.
+Thus, scattered photons fail to satisfy the image-forming condition. 
+Scattering is due to the inhomogeneous refractive index of the sample. 
+Photons that are not scattered are known ballistic photons. 
+
+As you saw previously, image quality can be improved by an well set up K\"{o}hler illumination system.
+However, even K\"{o}hler illumination does not fix the fundamental problems with wide-field imaging and it can only be used with thin samples where transmitted light illumination is possible.
+
+Fluorescence-based scanning microscopy greatly mitigates the problem of scattering. 
+A laser beam is scanned across the sample and excites a fluorophore. 
+Emitted fluorescence is collected via the objective and detected with a photomultiplier tube (PMT). 
+No image is formed on the PMT (it's a `single pixel'), instead the image is constructed \textit{post-hoc} on a computer from the time-series PMT data.
+Indeed, in many scanning microscopes the object and the PMT are not even at conjugate planes.
+The reason scattered light is less problematic in scanning microscopy depends on the design of the microscope:
+With confocal, the scattered light is rejected by the pinhole. 
+With 2-photon, the region of excitation is highly restricted so the origin of all collected photons is known. 
+
+
+
+
+\subsection{Building a transmission scanning microscope}
+Today you will build a transmitted light scanning microscope using a set of scanners, three lenses, two mirrors, and a laser pointer.
+For detection you will use a photodiode located after the sample. 
+This setup of course provides none of the advantages of a scanning microscope, since it's not fluorescence based and there is no pinhole. 
+However, the arrangement of the excitation path optics will be identical to that found in the 2-photon microscope you will go on to build. 
+
+\section{Instructions}
+
+\subsection{Set up the scanners and align the beam}
+Set up the rail and scanners as follows:
+\begin{itemize}
+\setlength\itemsep{0.15em}
+\item Bolt the optical rail to the breadboard using a clamp on each end. Do not over-tighten. 
+\item Place two irises on the ends of the rail and set them to the same height. 
+Locating them on fully lowered $75~mm$ posts is suitable. 
+\item Place the the scanners at one end of the rail and power them (ask for assistance).
+The scanners need to be powered for the mirrors to be square with respect to each other. 
+\item Loosely bolt the scanners into place. 
+\item You may end up needing to the move the rail or the scanners during the alignment procedure.
+\end{itemize}
+
+\vspace{1.5em}
+
+You're now ready to position and align the laser. 
+You will use two mirrors to align the beam going into the scanners.
+Your goal is to have the beam hit the middle of the scan mirrors then go straight down the rail, parallel with the table. 
+This will be easiest if you position one mirror, angled at 45 degrees, close to the scanners.
+The next mirror should be some distance from the first one and square with respect to it. 
+The laser pointer is placed at 45 degrees with respect to this second mirror. 
+Do the initial coarse alignment by moving and rotating the mirrors and the laser pointer. 
+Then bolt down the components and use the fine-adjustment screws on the mirror mounts. 
+Use the irises to ensure the beam runs straight down the rail. 
+You will likely find that the scanners aren't aligned with the irises and that either they or the rail need to be moved. 
+Expect to do the alignment procedure several times. 
+It's OK for our purposes if the alignment isn't \textit{perfect}. 
+Getting it to within a couple of beam diameters should be adequate. 
+
+
+\subsection{Add the optics}
+You will use the 4X objective to image the scan pattern onto the sample using the objective's full NA. 
+Two things need to be achieved in order to make this possible. 
+\begin{enumerate}
+\setlength\itemsep{0.1em}
+\item The scan mirrors will need to be in a conjugate plane to the back aperture of the objective. 
+\item The beam will need to be expanded to fill the back aperture of the objective. 
+\end{enumerate}
+
+Both of these things can be satisfied by building a beam expander between the objective and the scanners. 
+Place the objective mid-way down the rail and align it with the beam. Use an iris to guide you.
+Choose suitable lenses for your beam expander and locate them in the correct places 
+(think about what distance each element should be with respect to the others). 
+You can move the irises to help you position the lenses. 
+The lens nearer the scanners is called the \textbf{scan lens}.
+The lens nearer the objective is called the \textbf{tube lens}.
+
+\subsection{Verifying the scan pattern}
+\begin{itemize}
+\item Connect the scan control cables to the analog outputs of your acquisition card. 
+The $x$ mirror is responsible for the `fast' axis and goes to AO0. The $y$ mirror is responsible for the slow axis and goes to to AO1. 
+Ask if you are unsure how to do this. 
+\item Start NI MAX, go to the test panels for your DAQ device and select analog output. 
+\item Play a $10~Hz$ sine wave of amplitude $3~V$ through each channel in turn. 
+\item Use a card or piece of paper to observe the beam motion through your optical system. 
+What do you see at $1f$ from the scan lens?
+What do you see at the working distance of the objective?
+What do you see on the back of the objective?
+What about in front of the objective?
+Satisfy yourself that all those things make sense.
+\end{itemize}
+
+
+\subsection{Obtaining images}
+\begin{itemize}
+\item Place a slide containing an EM grid at the working distance of the objective. 
+\item Place a photodiode close to the back of the slide and hook it up to AI0 on your DAQ. 
+\item You may get a better image with a collection lens in front of the detector, but this isn't critical\footnote{Or even K\"{o}hler, for that matter.}.
+\item If you have been introduced to the scan software, start the `minimal' version to begin scanning and acquisition.
+The brave can write their own scan software from scratch. 
+You can do it with MATLAB's Data Acquisition Toolbox in  about 150 lines of code. 
+\item You will likely need to focus carefully to get an image: the depth of field is quite narrow. 
+\item Your image will look distorted. 
+Where does the distortion come from?
+\item Modify the acquisition software to either (\textbf{a}) get rid of the artifact or (\textbf{b}) implement faster bidirectional scanning and correct the artifacts you see. You choose. 
+\item Modify the software to save the image stream to disk. Hint: \textbf{help imwrite}
+\item Acquire images of the grid at three different scan amplitudes and calculate the number of microns per pixel. 
+\item Image a biological specimen, save the image, add a scale bar.
+\end{itemize}
+
+
+\end{document}
