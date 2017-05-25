@@ -2,7 +2,7 @@
 %%%%  Load the document class and packages                         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper]{report}
-\usepackage{epsfig}            % to insert PostScript figures
+\usepackage{epsfig} %to insert PostScript figures
 \graphicspath{ 
   {figures/} 
 }
@@ -20,10 +20,8 @@
 \makeatother
 
 \usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2.5cm]{geometry} 
-\usepackage{textcomp}          % To make nice degree symbols and others\usepackage[bf,footnotesize]{caption} % make captions small and label bold
+\usepackage{textcomp}  %To make nice degree symbols and others\usepackage[bf,footnotesize]{caption} % make captions small and label bold
 \usepackage{wrapfig}
-%to produce the clickable references along the left in Acroread. This
-%package must be included last. 
 \usepackage[ps2pdf,bookmarks=TRUE]{hyperref} 
 
 
@@ -56,17 +54,11 @@ pdfproducer = {dvips + ps2pdf}
 \section{Introduction}
 
 \subsection{Scanning microscopy}
-Widefield imaging uses lenses to form a real image of the sample which is magnified and imaged onto a CCD chip or viewed by eye. 
-In this scenario the sample is conjugate with the image plane. 
-In widefield microscopy the entire field of view is illuminated so a great deal of scattered light from outside of the focal plane ends up in the image plane. 
-Recall the definition of an image-forming condition: \textbf{light rays leaving one point (or region) of the object arrive at some other defined point (or region)}.
-Scattered photons are so defined because they arrive at the image plane at a location \textit{not conjugate} with where they originally came from.
+In widefield microscopy the entire field of view is illuminated and a great deal of scattered light from outside of the focal plane ends up in the image plane. 
+Recall that in an image-forming condition: \textbf{light rays leaving one point (or region) of the object arrive at some other defined point (or region)}.
+Scattered photons are so defined because they arrive at the image plane at a location \textit{not conjugate} with their origin.
 Thus, scattered photons fail to satisfy the image-forming condition. 
-Scattering is due to the inhomogeneous refractive index of the sample. 
 Photons that are not scattered are known ballistic photons. 
-
-As you saw previously, image quality can be improved by an well set up K\"{o}hler illumination system.
-However, even K\"{o}hler illumination does not fix the fundamental problems with wide-field imaging and it can only be used with thin samples where transmitted light illumination is possible.
 
 Fluorescence-based scanning microscopy greatly mitigates the problem of scattering. 
 A laser beam is scanned across the sample and excites a fluorophore. 
@@ -75,35 +67,31 @@ No image is formed on the PMT (it's a `single pixel'), instead the image is cons
 Indeed, in many scanning microscopes the object and the PMT are not even at conjugate planes.
 The reason scattered light is less problematic in scanning microscopy depends on the design of the microscope:
 With confocal, the scattered light is rejected by the pinhole. 
-With 2-photon, the region of excitation is highly restricted so the origin of all collected photons is known. 
+With 2-photon, the excitation volume is highly restricted so the origin of all collected photons is known. 
 
 
 
 
 \subsection{Building a transmission scanning microscope}
-Today you will build a transmitted light scanning microscope using a set of scanners, three lenses, two mirrors, and a laser pointer.
+You will now build a transmitted light scanning microscope using a set of scanners, three lenses, two mirrors, and a laser pointer.
 For detection you will use a photodiode located after the sample. 
 This setup of course provides none of the advantages of a scanning microscope, since it's not fluorescence based and there is no pinhole. 
 However, the arrangement of the excitation path optics will be identical to that found in the 2-photon microscope you will go on to build. 
 
-\section{Instructions}
-
-\subsection{Set up the scanners and align the beam}
+\section{Set up the scanners and align the beam}
 Set up the rail and scanners as follows:
 \begin{itemize}
 \setlength\itemsep{0.15em}
 \item Bolt the optical rail to the breadboard using a clamp on each end. Do not over-tighten. 
 \item Place two irises on the ends of the rail and set them to the same height. 
 Locating them on fully lowered $75~mm$ posts is suitable. 
-\item Place the the scanners at one end of the rail and power them (ask for assistance).
-The scanners need to be powered for the mirrors to be square with respect to each other. 
-\item Loosely bolt the scanners into place. 
+\item Place the the scanners at one end of the rail.
+The scanners need to be powered and the command inputs at 0 V for the mirrors to be square with respect to each other. 
 \item You may end up needing to the move the rail or the scanners during the alignment procedure.
 \end{itemize}
 
 \vspace{1.5em}
 
-You're now ready to position and align the laser. 
 You will use two mirrors to align the beam going into the scanners.
 Your goal is to have the beam hit the middle of the scan mirrors then go straight down the rail, parallel with the table. 
 This will be easiest if you position one mirror, angled at 45 degrees, close to the scanners.
@@ -115,7 +103,7 @@ Use the irises to ensure the beam runs straight down the rail.
 You will likely find that the scanners aren't aligned with the irises and that either they or the rail need to be moved. 
 Expect to do the alignment procedure several times. 
 It's OK for our purposes if the alignment isn't \textit{perfect}. 
-Getting it to within a couple of beam diameters should be adequate. 
+Getting it to within a couple of beam diameters is quite adequate. 
 
 
 \subsection{Add the optics}
@@ -127,7 +115,7 @@ Two things need to be achieved in order to make this possible.
 \item The beam will need to be expanded to fill the back aperture of the objective. 
 \end{enumerate}
 
-Both of these things can be satisfied by building a beam expander between the objective and the scanners. 
+These can be satisfied by building a beam expander between the objective and the scanners. 
 Place the objective mid-way down the rail and align it with the beam. Use an iris to guide you.
 Choose suitable lenses for your beam expander and locate them in the correct places 
 (think about what distance each element should be with respect to the others). 
@@ -135,38 +123,138 @@ You can move the irises to help you position the lenses.
 The lens nearer the scanners is called the \textbf{scan lens}.
 The lens nearer the objective is called the \textbf{tube lens}.
 
-\subsection{Verifying the scan pattern}
+\subsection{Verifying the beam motion}
 \begin{itemize}
 \item Connect the scan control cables to the analog outputs of your acquisition card. 
-The $x$ mirror is responsible for the `fast' axis and goes to AO0. The $y$ mirror is responsible for the slow axis and goes to to AO1. 
-Ask if you are unsure how to do this. 
+The smaller $x$ mirror is responsible for the `fast' axis and goes to AO0. The $y$ mirror is responsible for the slow axis and goes to to AO1. 
 \item Start NI MAX, go to the test panels for your DAQ device and select analog output. 
 \item Play a $10~Hz$ sine wave of amplitude $3~V$ through each channel in turn. 
-\item Use a card or piece of paper to observe the beam motion through your optical system. 
+\item Use a card to observe the beam motion through the optical system. 
 What do you see at $1f$ from the scan lens?
 What do you see at the working distance of the objective?
 What do you see on the back of the objective?
-What about in front of the objective?
 Satisfy yourself that all those things make sense.
 \end{itemize}
 
+\clearpage
+
+\section{Building the scan pattern}
+
+You will now create and test various galvo waveforms using MATLAB. 
+Wire up your DAQ and scanners as follows:
+
+\begin{itemize}
+    \item Hook up \texttt{AO0} to the $x$ galvo input terminal.
+    \item Copy \texttt{AO0} to \texttt{AI0}
+    \item Connect \texttt{AI1} to the galvo position output.
+\end{itemize}
+
+Open the \texttt{waveformTester.m} file from SimpleMScanner and edit the \texttt{DAQDevice} property so it is the ID of your DAQ card. 
+Now run \texttt{S=waveformTester;}, which will feed a sinusoidal command signal to the scanner. 
+You will see a sinusoidal black trace overlaid by a sinusoidal red trace. 
+The black is the command signal and the red is the galvo position. 
+The inset blue sub-plot shows the position signal as a function of the command signal. 
+Frequency of the waveform is displayed in the window title and at the command line. 
+You can stop acquisition and disconnect from the DAQ by closing the figure window.
+
+Read through the code and satisfy yourself that you understand how it works. 
+Pay particular attention to how the waveform is built. 
+The waveform amplitude is scaled by \texttt{galvoAmp}.
+The property \texttt{pixelsPerLine} defines how many samples per line are used for the optional sawtooth waveform. 
+For the current sine wave, \texttt{pixelsPerLine} is the number samples in one cycle. 
+The waveform is repeated \texttt{numReps} times, so this many cycles are plotted at once. 
+The \texttt{generateScanWaveform} method builds the waveform, which is either a sawtooth or a sine wave according to the value of \texttt{waveformType}.
+
+
+\subsection{The effect of command signal frequency}
+The scanners have inertia so their ability to follow the command waveform will depend upon its shape and frequency. 
+Let's try changing the frequency. 
+Close the figure window (take screenshot first if you want to compare before and after) and edit the \texttt{sampleRate} property.
+Increase it to, say 128E3. 
+Re-start the \texttt{waveformTester} object. 
+Notice the larger lag between the position and command and how this is reflected in the blue X/Y plot. 
+You can try higher sample rates, but some DAQ devices may refuse cooperate over about $200~kS/s$.
+
+
+Let's now try having fewer samples per cycle, which is the other way of increasing the mirror frequency. 
+Close the figure window, set \texttt{pixelsPerLine} to 128, and restart.
+If your scanners can't keep up, try a larger value. 
+At 128 \texttt{samplesPerLine} and $128~kS/s$ sample rate the scanner runs at $1~kHz$. 
+There will be a big lag now. 
+If your scanners will keep up, you can try lines as short as about 32 pixels, which is $4~kHz$. 
+Turn off the scanner PSU if the scanners make a peculiar noise. 
+Insufficient current supplied by the scanner PSU is one reason for the scanners not being able to follow higher frequencies.
+Don't push beyond $4~kHz$ in case the scanners are damaged.
+Also, don't try such high frequencies with other command waveform shapes.
+
+
+
+\subsection{Synchronising AI and AO}
+You will see in the code that the AI and AO tasks are set to run at the same clock speed. 
+This is the easiest way of ensuring that the incoming data are synchronised with the output waveforms. 
+We care about this because when we later build images we will do so by assigning pixels based upon the current galvo command voltage, not the position feedback.
+Since the AO and AI do not share a sample clock, it's possible to break the AO/AI synchronisation. 
+Set \texttt{pixelsPerLine} to 128 and the sample rate to 128E3 ($128~kS/s$). 
+All should look good. 
+Now try a range of different, but similar, sample rates. e.g. try 117E3. 
+Likely you will see a warning message and precession of the AI waveforms (this is relative to the AO). 
+Try fixing this by setting the AI and AO clocks to be shared as in the \texttt{polishedScanner} class. 
+Verify that it's now possible to acquire data without precession taking place.
+
+
+\subsection{Trying different waveforms}
+Try a sawtooth waveform by modifying the \texttt{waveformType} property. 
+Start with a frequency below $500~Hz$ then carefully try higher frequency (e.g. $2~kHz$). 
+How well do the scanners follow the command signal?
+
+The sawtooth waveform is commonly called a `unidirectional scan waveform' because we acquire data in one direction only. 
+What might a `bidirectional' waveform look like? i.e. A waveform that can be used to acquire data along both the outward going and reverse directions. 
+Build this waveform by adding a case in the \texttt{generateScanWaveform} method. 
+Does the scanner position signal better following control signal?
+Your waveforms are what are known as `unshaped' waveforms, meaning that they incorporate no acceleration and deceleration at the turn-around periods. 
+Adding this can improve the ability of the scanners to follow fast waveforms.
+
+ScanImage uses shaped waveforms\footnote{The waveform signals themselves are stored in \texttt{hSI.hWaveformManager.scannerAO}.}.
+Start ScanImage yourself or we will demo it. 
+Explore scanning bidirectionally and uni-directionally. 
+The line period is listed in the CONFIGURATION window and you can copy the galvo command signals to an oscilloscope to verify the amplitude. 
+You can compare these waveforms to the ones you produced in a variety of ways: 
+You will notice these waveforms produce much quieter scanning for a given amplitude and line period.
+Can you see better tracking of the command and position waveforms on the scope?
+Can you scan at faster speeds without the galvos cutting out? 
+
+
+\subsection{Correcting image artifacts}
+As briefly mentioned above, when we build images we will do so based on the command waveforms. 
+In other words, we assume the beam is located where we asked it to be and we place the pixels at that location.
+Since the actual beam position does not exactly follow the expected position, this presents us with a problem. 
+As you have seen, the problem is worse at faster scan speeds and the form of the problem differs across the three waveform shapes you have worked with.
+
+How can we solve this problem of deciding where to place the pixels?
+In theory we could use the feedback signal, but in practice doing so can introduce noise and it's generally not done (although you're welcome to try it). 
+The alternative is to somehow modify the relationship of the command and position signals such that the points plotted on the blue overlay plot form a straight line.
+Choose one or two waveform types and modify \texttt{readAndDisplayScanData} so that the relationship between command and position is close to a straight line. 
+Hint: you will likely need to chop out data points. 
+If you're working with the sine wave, consider the spacing between points. 
+Is there a problem there?
+
 
 \subsection{Obtaining images}
-\begin{itemize}
-\item Place a slide containing an EM grid at the working distance of the objective. 
-\item Place a photodiode close to the back of the slide and hook it up to AI0 on your DAQ. 
-\item You may get a better image with a collection lens in front of the detector, but this isn't critical\footnote{Or even K\"{o}hler, for that matter.}.
-\item If you have been introduced to the scan software, start the `minimal' version to begin scanning and acquisition.
-The brave can write their own scan software from scratch. 
-You can do it with MATLAB's Data Acquisition Toolbox in  about 150 lines of code. 
-\item You will likely need to focus carefully to get an image: the depth of field is quite narrow. 
-\item Your image will look distorted. 
-Where does the distortion come from?
-\item Modify the acquisition software to either (\textbf{a}) get rid of the artifact or (\textbf{b}) implement faster bidirectional scanning and correct the artifacts you see. You choose. 
-\item Modify the software to save the image stream to disk. Hint: \textbf{help imwrite}
-\item Acquire images of the grid at three different scan amplitudes and calculate the number of microns per pixel. 
-\item Image a biological specimen, save the image, add a scale bar.
-\end{itemize}
+First set up the hardware to allow for image acquisition.
+Place a slide containing an EM grid at the working distance of the objective. 
+Place a photodiode close to the back of the slide and hook it up to \texttt{AI0} on your DAQ. 
+You may get a better image with a collection lens in front of the detector, but this isn't critical\footnote{Or even K\"{o}hler, for that matter.}.
+Try to focus the beam onto the grid.
+Now it's time to get an image!
+You have two choices.
+\begin{enumerate}
+    \item Set up and run \texttt{minimalScanner}. This should produce images right away. Then try \texttt{basicScanner} to see how artifacts are corrected.
+    \item Add the code for controlling the $y$ mirror to \texttt{waveformTester} and modify the plotting code to show an image. 
+    You can cheat and steal code from \texttt{basicScanner} if needed. 
+\end{enumerate}
+
+In either case you should finish up by looking at how \texttt{polishedScanner} allows changing in scan parameters on the fly. 
+Note also how \texttt{basicScanner} and \texttt{polishedScanner} save images to disk.
 
 
 \end{document}
