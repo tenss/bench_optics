@@ -176,9 +176,8 @@ Let's try changing the frequency.
 Close the figure window (take screenshot first if you want to compare before and after) and edit the \texttt{sampleRate} property.
 Increase it to, say 128E3 ($128~kS/s$). 
 Re-start the \texttt{waveformTester} object. 
-Notice the larger lag between the position and command and how this is reflected in the blue X/Y plot. 
+Notice the larger phase lag between the position and command and how this is reflected in the blue X/Y plot. 
 You can try higher sample rates, but some DAQ devices may refuse cooperate over about $200~kS/s$.
-
 
 Let's now try having fewer samples per cycle, which is the other way of increasing the mirror frequency. 
 Close the figure window, set \texttt{pixelsPerLine} to 128, and restart.
@@ -190,6 +189,11 @@ Turn off the scanner PSU if the scanners make a peculiar noise.
 Insufficient current supplied by the scanner PSU is one reason for the scanners not being able to follow higher frequencies.
 Don't push beyond $4~kHz$ in case the scanners are damaged.
 Also, don't try such high frequencies with other command waveform shapes.
+
+Based on what you see on the screen, draw on paper a plot of the difference between the command and feedback signals as a function of time.
+Now verify this: plotting the difference between the command signal and the control signal in MATLAB.
+You can do this in a number of ways. e.g. modify the code for the blue inset plot, or access the data in the main figure by doing:
+\texttt{S.hPltDataAO0.YData}, for instance, and plot in a new figure window. 
 
 
 
@@ -209,8 +213,9 @@ Verify that it's now possible to acquire data without precession taking place.
 
 \subsection{Trying different waveforms}
 Try a sawtooth waveform by modifying the \texttt{waveformType} property. 
-Start with a frequency below $500~Hz$ then carefully try higher frequency (e.g. $2~kHz$). 
+Start with a frequency below $250~Hz$ then carefully try higher frequency (e.g. $1~kHz$). 
 How well do the scanners follow the command signal?
+Again, think about the difference plot then create the plot in MATLAB.
 
 The sawtooth waveform is commonly called a `unidirectional scan waveform' because we acquire data in one direction only (the slow ramp). 
 What might a `bidirectional' waveform look like? i.e. A waveform that can be used to acquire data along both the outward going and reverse directions. 
@@ -218,16 +223,6 @@ Build this waveform by adding a case in the \texttt{generateScanWaveform} method
 Does the scanner position signal better following control signal?
 
 
-Your waveforms are what are known as `unshaped' waveforms, meaning that they incorporate no acceleration and deceleration at the turn-around periods. 
-Adding this can improve the ability of the scanners to follow fast waveforms.
-ScanImage uses shaped waveforms\footnote{The waveform signals themselves are stored in \texttt{hSI.hWaveformManager.scannerAO} of the ScanImage object.}.
-Start ScanImage yourself or we will demo it. 
-Explore scanning bidirectionally and uni-directionally. 
-The line period is listed in the CONFIGURATION window and you can copy the galvo command signals to an oscilloscope to verify the amplitude. 
-You can compare these waveforms to the ones you produced in a variety of ways: 
-You will notice these waveforms produce much quieter scanning for a given amplitude and line period.
-Can you see better tracking of the command and position waveforms on the scope?
-Can you scan at faster speeds without the galvos cutting out? 
 
 
 \subsection{Correcting image artifacts}
