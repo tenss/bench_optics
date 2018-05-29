@@ -13,3 +13,4 @@
 /laser_alignment.log
 /laser_alignment.out
 /laser_alignment.pdf
+*.DS_Store
