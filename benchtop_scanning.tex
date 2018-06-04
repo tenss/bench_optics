@@ -125,7 +125,8 @@ Tips:
 \subsection{Controlling the scan mirrors}
 
 \begin{itemize}
-    \item Connect the analog input of the $x$ galvo mirror to analog output zero (\texttt{AO0}) of the NI DAQ and the $y$ galvo mirror input to \texttt{AO1}. 
+    \item Connect the analog input of the $x$ galvo mirror (the wires labeled `control` and `ground`) to analog output zero (\texttt{AO0}) and its ground connection.
+    Connect the $y$ galvo mirror input to \texttt{AO1} in the same way. 
     \item Open NI MAX (Measurement \& Automation Explorer),
         \begin{enumerate}
             \setlength\itemsep{0.15em}
@@ -140,6 +141,7 @@ Tips:
     \item Stop the sine wave. Set the `Rate' to `50,000' to produce a 50~Hz motion. What does the outgoing beam look like now?
     \item Now try the `DC' option under `Mode' and explore what happens when you apply a variety of constant non-zero voltages (press `Update' to apply your chosen voltage to the device).
 \end{itemize}
+
 
 \begin{figure}[h]
 \centering
@@ -181,8 +183,8 @@ Before starting, make the following modifications to the DAQ breakout box.
 
 \begin{itemize}
     \setlength\itemsep{0.15em}
-    \item Use a BNC T-connector to copy \texttt{AO0} to \texttt{AI0}. This will allow us to acquire and monitor the $x$ galvo command signal.
-    \item Connect \texttt{AI1} to the galvo position output lead. This will allow us to compare the actual mirror position with the command position.
+    \item Copy \texttt{AO0} to \texttt{AI0+} by linking the two terminals with a wire. Connect \texttt{AI0+} to the  \texttt{AO0} ground connection. This will allow us to acquire and monitor the $x$ galvo command signal.
+    \item Connect \texttt{AI1+} to the white galvo position output lead.  Connect \texttt{AI1+} to \texttt{AI0+}. This will allow us to compare the actual mirror position with the command position.
 \end{itemize}
 
 \noindent
@@ -194,7 +196,7 @@ The class is part of the SimpleMScanner\footnote{\textit{https://github.com/tens
 \setlength\itemsep{0.15em}
 \item In MATLAB, run \texttt{edit waveformTester.m} to bring up the code. 
 \item Ensure that the \texttt{DAQDevice} property is set to the ID of your DAQ card as shown in NI MAX. 
-\item Run \texttt{S=waveformTester;}, which will send a sinusoidal command signal to the scanner and create an object called \texttt{S} in the base workspace.
+\item Run \texttt{waveformTester;}, which will send a sinusoidal command signal to the scanner and create an object called \texttt{S} in the base workspace.
 \item At any time you can stop acquisition and disconnect from the DAQ by closing the figure window.
 \end{itemize}
 
@@ -253,32 +255,27 @@ Close the figure window, set \texttt{pixelsPerLine} from the default 256 to 128,
 At 128 \texttt{samplesPerLine} and $128~kS/s$ sample rate the scanner runs at $1~kHz$ and there will be a substantial lab between the actual position and the commanded position.
 
 \subsection{Different waveform types}
-
+Return the sample rate to 32E3 and the number of samples per line to 512. 
 Change the \texttt{waveformType} property from `sine' to `sawtooth' and restart the \texttt{waveformTester}. 
+How well is the scanner following the command waveform? 
 Satisfy yourself that you understand why the blue inset plot looks as it does. 
-What advantages might this new waveform have for building 1-D images?
-Hint: think about how the beam changes speed during the sawtooth in comparison to the sinewave. 
+What are the advantages and disadvantages of this new waveform for building 1-D images?
+Hint: think about how the beam changes speed during the sawtooth in comparison to the sinewave.
+Think also how you might build the image on the PC and how well the mirrors follow the sawtooth waveform.
 
 
 \clearpage
 
 \section{Building scan waveforms}
 The sawtooth scan is not an unreasonable waveform to use for building a 1-D image. 
-With such a pattern you will acquire data during the slower ramp phase. 
-The period of time during which the beam is rapidly returning to the start of the slow ramp (the so called `flyback`) will not be used for forming an image.
 Whilst more efficient scan patterns exist, we will aim to use a sawtooth for now.
+
 
 \subsection{Playing two analog waveforms simultaneously}
 So far you have moved only the $x$ mirror and considered 1-D images. 
 Obviously you need to move both mirrors at the same time to get a 2-D scan pattern and image full frames.
 Before proceeding, let's get both mirrors moving at the same time. 
-First of all, re-wire your setup:
-\begin{itemize}
-    \setlength\itemsep{0.15em}
-    \item Attach BNC T-pieces to \texttt{AO0} and \texttt{AO1}.
-    \item Connect \texttt{AO0} to the $x$ mirror analog input and also to channel 1 of the oscilloscope. 
-    \item Connect \texttt{AO1} to the $y$ mirror analog input and also to channel 2 of the oscilloscope. 
-\end{itemize}
+First of all, re-wire your setup so that the two analog outputs are copied to channels 1 and 2 of the oscilloscope.
 
 \noindent
 Now run the command \texttt{vidrio.AO.hardwareContinuousVoltageNoRegen\_2chans} to play out two sine waves.
@@ -300,9 +297,8 @@ In this section you will modify \texttt{waveformTester.m} in order to turn it in
 
 \noindent
 Your new \texttt{scanTester} class will need to be modified to produce suitable $x$ and $y$ waveforms and also to plot the photodiode signal as an image. 
-Modify \texttt{scanTester} to produce suitable waveforms out of \texttt{AI0} and \texttt{AO1}. 
-Use \texttt{vidrio.AO.hardwareContinuousVoltageNoRegen\_2chans} to figure out how to add the second channel.
-Try to produce square images at about 1 or 2 frames per second. 
+Use \texttt{vidrio.AO.hardwareContinuousVoltageNoRegen\_2chans} to figure out how to add the second analog output channel.
+Try to produce square images at about 0.5 frames per second. 
 Start off with a sample rate of 32E3 and change the frame rate by altering the image size.
 Hints:
 \begin{itemize}
@@ -314,7 +310,8 @@ Hints:
 \end{itemize}
 
 \noindent
-Once you have the waveforms looking reasonable, it's time to modify the code to handle the photodiode signal. 
+
+Once you have the waveforms looking reasonable judging by the oscilloscope and the scan pattern, it's time to modify the code to handle the photodiode signal. 
 To begin with, let's just ensure we can display the incoming photodide signal as a line plot.
 
 \begin{itemize}
@@ -341,7 +338,7 @@ To begin with, let's just ensure we can display the incoming photodide signal as
 \end{figure}
 
 \noindent
-Once you have reached the stage above you know that you're pulling the data correctly and all you need to do is plot the data as an image instead of a line plot.
+Once you have reached the stage above, you know that you're pulling in the data correctly and all you need to do is reshape them into an image instead of a line plot.
 Hints:
 \begin{itemize}
     \setlength\itemsep{0.15em}
@@ -352,16 +349,15 @@ Hints:
 \end{itemize}
 
 \noindent
+Place the photodiode around 30~cm from the scanners and use and amplitude of 2 or 3~V.
 Fire up the code and try to get an image. 
-Try placing the photodiode a little distance from the scanners and using a large scan angle. 
-Try slowly moving the photodiode. 
-What does the image on the screen represent?
+What do you see?
+Is it what you expect? Hint: think about how the image is being assembled and how well the scanner follows the command signal.
+What happens if you slide the photodiode up and down in the post holder?
 Now move the photodiode closer to the scanners and use a scan pattern that only just fills the photodiode active area. 
 Note how the image changes. 
-Stick a small paper square to a coverslip and place it over the photodiode active area. 
-Satisfy yourself you have an image of the paper on the computer screen. 
-Do you notice any obvious artifacts in the image? 
-Where do they come from?
+Stick a small paper square to a coverslip and place it over the photodiode active area and watch the image.
+
 
 \begin{figure}[h]
 \centering
@@ -410,26 +406,24 @@ If you have completed the above and still have time, you can explore any of the 
 
 
 
-\subsection{Trying different waveforms}
+\subsection{Trying different waveforms in ScanImage}
 The sawtooth waveform is commonly called a `unidirectional scan waveform' because we acquire data in one direction only (the slow ramp). 
 It's easy to build an image from this waveform but a lot of time is wasted during the $x$ mirror flyback. 
 You could optimize this by using both the outward and return portions of the waveform to build an image. 
-How would you change your sawtooth waveform to allow for this `bidirectional' scanning? 
-Build this waveform by adding a case in the \texttt{generateScanWaveform} method then modify the image display code to handle the data produced by this new waveform. 
+Think how would you change your sawtooth waveform to allow for this `bidirectional' scanning? 
 
-
-\subsection{Saving images and adding features to your scanning software}
-The SimpleMscanner repository contains a bunch of increasingly elaborate pieces of scanning software in the `DAQmx\_Scanners' directory. 
-The \texttt{basicScanner} class does image saving and removes the $x$ mirror flyback artifact. 
-Explore that code to see how it does this.
+ScanImage supports both unidirectional and bidirectional scanning. 
+Start it by typing `scanimage` into the command line and set it up with the help of a TA. 
+`Focus` starts scanning and `Configuration` window allows you to change scan settings. 
+Get an image of the photodiode and explore how this alters when you change the scan settings. 
+Try to get a nice image of the photodiode without artifacts using bidirectional scanning. 
 
 
 \subsection{Correcting image artifacts}
-As briefly mentioned above, when we build images we will do so based on the command waveforms. 
-In other words, we assume the beam is located where we asked it to be and we place the pixels at that location.
-Since the actual beam position does not exactly follow the expected position, this presents us with a problem. 
-As you have seen, the problem is worse at faster scan speeds and the form of the problem differs across waveform shapes.
-Try to come up with a way of correcting the image. Perhaps you could use the mirror feedback signal, or use the command signal but remove the non-linear portions, or some mixture of those options. 
-
+We built images based on the command waveforms. 
+In other words, we assume the beam is located where we asked it to be and we placed the pixels at that location.
+Since the actual beam position does not follow the expected position, this produces artifacts. 
+Try to come up with a way of correcting the image. 
+Perhaps you could use the mirror feedback signal, or use the command signal but remove the non-linear portions, or some mixture of those options. 
 
 \end{document}
