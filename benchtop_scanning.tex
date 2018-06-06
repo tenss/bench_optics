@@ -318,7 +318,7 @@ To begin with, let's just ensure we can display the incoming photodide signal as
     \setlength\itemsep{0.15em}
     \item Set the \texttt{AIChan} property to `0', since we will be acquiring data on \texttt{AI0} only.
     \item In the constructor you can remove the code for making the blue inset plot and remove the line which creates \texttt{obj.hPltDataAO1}, as we won't be plotting that channel.
-    \item Modify the \texttt{readAndDisplayScanData} method to update only \texttt{obj.hPltDataAO1}. Remove lines relating to the other plots. 
+    \item Modify the \texttt{readAndDisplayScanData} method to update only \texttt{obj.hPltDataAO0}. Remove lines relating to the other plots. 
     \item Allow the beam to scan over the photodiode and test the code. 
     You should see something like that shown in Fig.~\ref{lineOnPD}. 
 \end{itemize}
