@@ -304,7 +304,7 @@ Hints:
 \begin{itemize}
     \setlength\itemsep{0.15em}
     \item The waveforms are stored in an N-by-2 array, where each row is a different time point. You only need to modify code in the \texttt{generateScanWaveform} method.
-    \item You will need to modify the \texttt{createAOVoltageChan} command to use both channels. You can do that by modifying the \texttt{AOChan} property.
+    \item Modify \texttt{obj.hAOTask.createAOVoltageChan} to use both channels 0 and 1.
     \item The \texttt{numReps} property can be used to set the number of scan lines per frame.
     \item The \texttt{pixelsPerLine} property will do what it says. 
 \end{itemize}
@@ -316,7 +316,7 @@ To begin with, let's just ensure we can display the incoming photodide signal as
 
 \begin{itemize}
     \setlength\itemsep{0.15em}
-    \item Set the \texttt{AIChan} property to `0', since we will be acquiring data on \texttt{AI0} only.
+    \item Modify \texttt{obj.hAITask.createAIVoltageChan} to acquire only on \texttt{AI0}.
     \item In the constructor you can remove the code for making the blue inset plot and remove the line which creates \texttt{obj.hPltDataAO1}, as we won't be plotting that channel.
     \item Modify the \texttt{readAndDisplayScanData} method to update only \texttt{obj.hPltDataAO0}. Remove lines relating to the other plots. 
     \item Allow the beam to scan over the photodiode and test the code. 
