@@ -2,6 +2,7 @@
 %%%%  Load the document class and packages                         %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper]{report}
+\usepackage{mdframed}
 \usepackage{epsfig}            % to insert PostScript figures
 \graphicspath{ 
   {figures/} 
@@ -12,6 +13,7 @@
 
 \usepackage[bf,footnotesize]{caption} % make captions small and label bold
 
+\newcommand{\nexercise}[0]{\arabic{exercises}\addtocounter{exercises}{1}}
 
 \addtocounter{chapter}{1} %Because starting at zero is silly
 \makeatletter
@@ -24,7 +26,7 @@
 \usepackage{wrapfig}
 %to produce the clickable references along the left in Acroread. This
 %package must be included last. 
-\usepackage[ps2pdf,bookmarks=TRUE]{hyperref} 
+\usepackage[bookmarks=TRUE]{hyperref} 
 
 
 
@@ -37,7 +39,7 @@ pdftitle = {Optics Exercises},
 pdfkeywords = {optics, lenses, refraction, reflection, dispersion,
   telescope, microscope},
 pdfcreator = {LaTeX with hyperref},
-pdfproducer = {dvips + ps2pdf}
+%pdfproducer = {dvips + ps2pdf}
            }
 
 
@@ -147,6 +149,22 @@ pdfproducer = {dvips + ps2pdf}
 %
 %
 %\clearpage
+\newcounter{exercises}
+\addtocounter{exercises}{1}
+\newmdenv[linewidth=2pt,
+frametitlerule=true,
+roundcorner=10pt,
+linecolor=red,
+leftline=false,
+rightline=false,
+skipbelow=12pt,
+skipabove=12pt,
+nobreak=true,
+innerbottommargin=7pt,
+]{exercisebox}
+
+
+
 
 \section{Image Formation}
 An image is formed when all light rays leaving one point (or region) of the object arrive at some other defined point (or region) \textit{regardless of the angle of the ray}. 
@@ -166,6 +184,7 @@ The upper ray (parallel to the optical axis on the left) passes through the foca
 \label{fig:imageforming}
 \end{figure}
 
+\begin{exercisebox}[frametitle={Exercise \nexercise: Ray tracing}]
 You will need to get comfortable with drawing ray diagrams, since you will do this over and over again in the school.
 Redraw the diagram in Fig.~\ref{fig:imageforming}.
 Draw the three cardinal rays:
@@ -174,6 +193,7 @@ Draw the three cardinal rays:
 \item The ray that passes through the centre of the lens travels undeflected.
 \item Finally, the ray that goes through $f$ on the object side leaves the lens parallel to the optical axis on the image side. 
 \end{itemize}
+\end{exercisebox}
 
 As the location of the object with respect to the lens ($s_o$) is varied, the location of the image ($s_i$) also changes. This relationship is determined by the lens focal length ($f$) using the thin lens equation.
 
@@ -194,7 +214,7 @@ Transverse locations above the optical axis are $>0$. Locations below are negati
 
 
 
-\subsubsection{1. Determine the focal length of a convex lens }
+\subsection{Determine the focal length of a convex lens }
 In the next few exercises, use the relationship described in \ref{eq:thinlens} to measure the focal length of a convex lens. You will use an LED as both a light source and an object to image. 
 \vspace{1em}
 
@@ -223,6 +243,7 @@ The image and sample planes are said to be \textbf{conjugate planes}.
 The image will be of the LED emitter, which usually looks like a small bright square, often with fine lines going across it. 
 If all you see is a blur, you have not formed an image.
 
+\begin{exercisebox}[frametitle={Exercise \nexercise: Image formation}]
 \begin{itemize}
 \item Select a relatively long ($>100~mm$) focal length lens.
 \item Place the lens $<1f$ from the LED and use a piece of card on the other side of the lens to verify that no image is formed at any distance from the lens.
@@ -234,10 +255,7 @@ What is the distance between the LED and the lens at which you see an image?
 It should be just over $1f$.
 \item Measure $s_i$ for three values of $s_o$ and fill in the table below. 
 Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
-\item What is the value of $s_i$ when $s_o=-2f$?
-\end{itemize}
-
-\vspace{2em}
+\begin{center}
 \begin{tabular}{| p{1cm} | p{1cm} | p{1cm} |}
 \hline
  $s_o$  &  $s_i$  &  $f$  \\
@@ -246,12 +264,15 @@ Using equation~\ref{eq:thinlens}, calculate $f$ for each value of $s_o$.
  & & \\ \hline
  & & \\ \hline
  & & \\ \hline
-\end{tabular}
+\end{tabular} 	
+\end{center}
+\item What is the value of $s_i$ when $s_o=-2f$?
+\end{itemize}
+\vspace{0.5em}
+Can you think of a quick method to estimate the focal length of a lens without doing any math?
+\end{exercisebox}
 
-\vspace{2em}
-Can you think of a quick method to estimate the focal length of a lens without doing any math? 
-
-\subsubsection{2. Magnifying the image}
+\subsection{Magnifying the image}
 As you probably noticed, the size of the image of the LED emitter varied with $s_o$.
 A lens produces images of different magnifications depending on $s_o$; an image can always be formed when $s_o>f$. 
 The magnification of a lens is calculated as follows:
@@ -263,12 +284,13 @@ M = \frac{h_i}{h_o} = \frac{s_i}{s_o}
 
 A value of $M=1$ would mean unitary magnification (the image is the same size as the object). 
 Negative numbers indicate an inverted image.
-
+\begin{exercisebox}[frametitle={Exercise \nexercise: Magnification}]
 To begin thinking about magnification, hand-draw the ray diagram (as in Fig.~\ref{fig:imageforming}) for the smallest and largest values of $s_o$ that you used above. 
 Make sure to give yourself plenty of room. 
 Hint: You will run out of paper if you use values too close $1f$.
 If you're stuck, choose $1.5f$ and $4f$.
-Note the changing angles of the rays and how they lead to different image sizes as $s_o$ changes. 
+Note the changing angles of the rays and how they lead to different image sizes as $s_o$ changes.
+\end{exercisebox} 
 %We will now see what happens when the rays come from infinity:
 %
 %\begin{itemize}
@@ -304,8 +326,8 @@ Note the changing angles of the rays and how they lead to different image sizes 
 
 \clearpage
 
-
-\subsubsection{3. Virtual images}
+\subsection{Virtual images}
+\begin{exercisebox}[frametitle={Exercise \nexercise: Virtual images}]
 At distances $s_o<f$, you were unable to form an image of the sample on the card because the rays emerging from the other side \textit{diverged}.
 \begin{itemize}
 \item Place the LED at $0.5f$ from a lens of your choice, observe the light diverging as it exits the lens.
@@ -314,6 +336,7 @@ Draw the ray that leaves the tip of the object and continues undeflected through
 Draw the ray that travels parallel to the optical axis and goes through $1f$ on the other side.
 See how these rays diverge. 
 \end{itemize}
+\end{exercisebox}
 
 It would seem that no image is formed yet, surprisingly, a \textit{virtual image} is formed on the same side of the lens as the object. 
 This may sound like a peculiar concept, but you are already familiar with virtual images as this is how you see images in flat mirrors (Fig.~\ref{fig:mirror}). 
@@ -370,6 +393,7 @@ M=-\frac{f_2}{f_1}
 \label{infiniteConjugate}
 \end{figure}
 
+\begin{exercisebox}[frametitle={Exercise \nexercise: Infinite conjugate}]
 \begin{itemize}
 \item Set up two lenses with different focal lengths on the rail to build the infinite conjugate. 
 Ensure that the first lens is at $1f$ from the LED before placing the second lens. 
@@ -379,11 +403,9 @@ What happens to the image size?
 \item Swap the first lens with one of a different focal length. 
 Verify that the image size changes in the manner in which you expect. 
 \end{itemize}
-
-
+\end{exercisebox}
 
 \clearpage
-
 
 \subsection{Beam expanders}
 Lenses can be used to expand the diameter of a light beam, such as a laser.
@@ -413,8 +435,8 @@ where $\phi$ is the beam diameter.
 
 We need collimated light (parallel rays) entering the system, so swap the LED for a laser pointer. Uses irises to make sure that the laser beam is parallel to the optical rail before you start mounting the lenses.
 
+\begin{exercisebox}[frametitle={Exercise \nexercise: Beam expander}]
 Build a 2x beam expander with two convex lenses. Place them at the sum of their focal lengths and use the laser pointer and irises as a guide for placing the lenses. 
-
 \begin{itemize}
 %\item Place two more rail carriages onto the rail, between the iris and the laser pointer. 
 %\item Place the $f=100~mm$ lens onto the post carriage nearest the laser and position the iris roughly $1f$ from the lens.
@@ -430,6 +452,7 @@ You can also use the back-reflection of the beam from the lens to check whether 
 %Hint: think about what happens to beams that do not travel on-axis (Fig.~\ref{fig:telescope}).
 %Once you've figured it out, remove the laser pointer and use your device. 
 \end{itemize}
+\end{exercisebox}
 
 %
 %\begin{figure}[h]
@@ -507,7 +530,8 @@ You can also use the back-reflection of the beam from the lens to check whether 
 %Your telescope is powerful enough to see the moons of Jupiter. 
 
 \clearpage
-\subsection{Optics Challenge}
+%\subsection{Optics Challenge}
+\begin{exercisebox}[frametitle={Exercise \nexercise: Optics challenge}]
 Arrange 4 lenses so as to form a de-magnified, real, upright
 image. Hints: 
 \begin{itemize}
@@ -519,22 +543,18 @@ image. Hints:
   becoming too dim. 
 \item There are multiple solutions to this problem.
 \end{itemize}
-
+\end{exercisebox}
 
 \clearpage
 \section{Illuminating the sample}
+\subsection{Critical illumination of a sample}
+
 Different samples are best illuminated in different ways.
 In transmission microscopy, the sample is illuminated from the opposite side to which it is imaged. 
 In fluorescence microscopy, the sample is illuminated from the same side, with the objective also serving as the condenser. 
 It is not efficient to illuminate the sample directly (with no intervening lenses) because light is emitted in all directions from the source but only a narrow range of ray angles reach the specimen. 
 In the following two exercises you will build two different illumination systems: critical and K\"{o}hler. 
 %You will be given a brighter light source (either a bright blue LED or a halogen light-guide).
-
-
-\subsection{Critical illumination of a sample}
-In critical illumination the light source is focused onto the specimen (Fig.~\ref{critIlum}).
-A suitable sample is a coverslip with thin lines drawn on with a marker.
-Set up critical illumination with a $f=25~mm$ lens. Use the 4x objective and a $f=300~mm$ (1") lens to form an image of the sample on a card.
 
 \begin{figure}[h]
 \center
@@ -543,29 +563,19 @@ Set up critical illumination with a $f=25~mm$ lens. Use the 4x objective and a $
 \label{critIlum}
 \end{figure}
 
-
-%\begin{itemize}
-%%\item Hint: to avoid running out of $50~mm$ posts in the exercise that follows, use $30~mm$ or $40~mm$ posts for the 2'' lenses, sample holder, and card holder.
-%%\item Place the light source at one end of the rail and then put an $f=25~mm$ or $f=30~mm$ 1'' lens at $2f$ from it.
-%\item Place your sample at $2f$ on the other side, where the image of the LED emitter or fiber bundle is formed.
-%Note that you can place a glass slide in a DH1 card holder (the black clip) by removing a clip on one side and loosening the screws a bit.
-%\item Move the slide back and forth until an image of the LED emitter appears on it. Use paper to help you see this if needed.
-%\item Place the 4x objective after the slide. This objective has a working distance of about $20~mm$.
-%\item At the other end of the rail, place a viewing card onto which you will form an image.
-%\item Position an $f=200~mm$ lens $1f$ from the card. This is known as the tube lens and will image the sample onto the card
-%\footnote{The $f=200~mm$ lens will yield 4x. You could use the $f=300~mm$ lens if you wish, to yield 6x.}.
-%\item Move the objective back and forth a small distance to focus and obtain an image. 
-%\end{itemize}
-
+\begin{exercisebox}[frametitle={Exercise \nexercise: Critical illumination}]
+In critical illumination the light source is focused onto the specimen (Fig.~\ref{critIlum}).
+A suitable sample is a coverslip with thin lines drawn on with a marker.
+Set up critical illumination with a $f=25~mm$ lens. Use the 4x objective and a $f=300~mm$ (1") lens to form an image of the sample on a card.
 The above arrangement is a simple microscope. 
-As you might expect, the image of the sample also contains an image of the light source. 
-This is obviously not ideal.
+As you might expect, the image of the sample also contains an image of the light source, which is obviously not ideal.
+
 Before we go on to address this problem, let's improve the illumination by capturing more of the light from the source. 
 We can do this by placing the $f=25~mm$ lens closer to the light source and adding an $f=60~mm$ lens after the $f=25~mm$ lens, forming an infinite conjugate system. 
 The lens nearer the source is known as the \textbf{collector lens} and will be at $1f$ from the source. The position of the focal plane can be difficult to estimate for short focal length lenses. Ask you favourite TA for pointers.
 The lens nearer the sample is known as the \textbf{condenser lens} and is at $1f$ from the sample. 
 This is still critical illumination, since the light source will be imaged onto the sample, but the collector lens will be closer to the source and so more light will be captured.
-
+\end{exercisebox}
 %\begin{itemize}
 %\item Remove all the posts (not the rail carriages) from the rail.
 %\item Add all 10 post and rail carriage assemblies to your rail. As you proceed, keep in mind that you will need 6 carriages between the objective and the light source.
@@ -591,11 +601,13 @@ This is still critical illumination, since the light source will be imaged onto 
 %\label{fig:clampedIris}
 %\end{figure}
 
-With an infinite conjugate illumination system it becomes possible to regulate the NA of the illumination by varying the size of the iris in the infinite space. 
+\begin{exercisebox}[frametitle={Exercise \nexercise: Illumination angle}]
+With an infinite conjugate illumination system it becomes possible to regulate the NA of the illumination by varying the size of an iris in the infinite space. 
 Try it!
 By altering the NA of the illuminated light, the iris provides control over the resolution, contrast, and depth of field.
-To see the effect: open the iris, defocus slightly by moving the objetive, now close the iris. The image will go back into focus. 
+To see the effect: open the iris, defocus slightly by moving the objective, now close the iris. The image will go back into focus. 
 You could also draw a cross on a coverslip with a marker and lay over your sample, then open and close the iris.
+\end{exercisebox}
 %
 %\begin{figure}[h]
 %\center
@@ -647,7 +659,7 @@ Closing the diaphragm blocks off-axis regions of the light source and stops them
 Closing the aperture diaphragm reduces the NA of the illumination and increases depth of field. 
 
 \clearpage
-
+\begin{exercisebox}[frametitle={Exercise \nexercise: K\"{o}hler illumination}]
 You will now convert the critical illumination to K\"{o}hler illumination simply by adding the $f=100~mm$ field lens and an extra iris.
 The components will be arranged in the following order and are all at $1f$ from each other (Fig.~\ref{fig:koehler}):
 \begin{enumerate}
@@ -667,6 +679,13 @@ You will likely need to tweak the distances between the components to get the fi
 Once this is done, regulate the size of the field diaphragm and observe the effect. 
 Defocus slightly and close the aperture diaphragm. Observe the effect.
 You have finished! But our princess is in another castle! See you tomorrow. 
+\end{exercisebox}
+
+\begin{figure*}[b]
+\begin{flushright}
+	\includegraphics[width=1.5in]{castle.png}	
+\end{flushright}
+\end{figure*}
 
 %\begin{figure}[h]
 %\center
