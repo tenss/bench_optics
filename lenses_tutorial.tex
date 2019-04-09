@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tabularx,booktabs}
+\usepackage{mdframed}
+
+\newcommand{\nexercise}[0]{\arabic{exercises}\addtocounter{exercises}{1}}
+
+\begin{document}
+
+\title{\vspace{-2.0cm}Lenses tutorial}
+%\author{Petr Znamenskiy}
+
+\maketitle
+
+\newcounter{exercises}
+\addtocounter{exercises}{1}
+\newmdenv[linewidth=2pt,
+frametitlerule=true,
+roundcorner=10pt,
+linecolor=red,
+leftline=false,
+rightline=false,
+skipbelow=12pt,
+skipabove=12pt,
+nobreak=true,
+innerbottommargin=7pt,
+]{exercisebox}
+
+\section{Introduction}
+What does it mean to form an image? First consider a large aperture in front of a screen. Follow the rays from an object on the other side of the aperture. What happens if we make the aperture really small? How can we achieve the same result without losing the majority of the light?
+
+Refractive index recap:
+\begin{equation}
+n = \frac{c_0}{c}
+\end{equation}
+where $c$ is the speed of propagation of light in the medium and $c_0$ is its speed in vacuum.
+
+Light refracts -- changes direction of propagation -- when the refractive index changes:
+\begin{equation}
+\label{eq:snells}
+	n_1 \sin{\theta_1} = n_2 \sin{\theta_2}
+\end{equation} 
+Eq. \ref{eq:snells} is known as Snell's law. Consider three scenarios:
+\begin{itemize}
+	\item parallel light hitting a flat piece of glass ($n>1$) at $\theta_1=0^\circ$
+	\item parallel light hitting a flat piece of glass at $\theta_1>0^\circ$
+	\item parallel light hitting a curved piece of glass
+\end{itemize}
+Two equivalent ways of looking at a lens:
+\begin{itemize}
+	\item ray picture
+	\item wavefront picture
+\end{itemize}
+\section{Focal length}
+Lens maker's equation:
+\begin{equation}
+\label{eq:lensmaker}
+	\frac{1}{\underbracket{f}_{\mathclap{\text{focal length}}}}=\left(\frac{n}{n_{air}}-1\right)
+	\bigg(\frac{1}{R_1} -
+	\frac{1}{R_2}+\frac{(n-1)\overbracket{d}^{\mathclap{\text{thickness of lens}}}}{nR_1R_2}\bigg)
+\end{equation}
+$R_1$ and $R_2$ are the radii of curvature of the surfaces of the lens closest to and furthest from the light light source. Sign conventions apply! 
+
+If $d$ is negligibly small, and since $n_{air} \approx 1$, Eq. \ref{eq:lensmaker} simplifies to:
+\begin{equation}
+	\frac{1}{f} = (n-1)\left(\frac{1}{R_1} - \frac{1}{R_2}\right)
+\end{equation}
+
+Inverse of the focal length is the power of the lens:
+\begin{equation}
+	P = \frac{1}{f} \text{ m$^{-1}$ or diopters}
+\end{equation}
+
+\section{Types of lenses}
+\begin{itemize}
+	\item Convex
+	\begin{itemize}
+		\item Biconvex
+		\item Planoconvex
+	\end{itemize}
+	\item Concave
+	\item Positive meniscus
+	\item Negative meniscus
+\end{itemize}
+
+\section{Ray tracing}
+To figure out the path of the rays, we use the rules of ray tracing summarized in Table 1. Notice that the first and last rules are mirror images of each other. This illustrates the principle of symmetry -- light rays are reversible. For example, a parallel beam will be focused by a lens to a point in the focal plane, while a point source in the focal plane will be collimated.
+
+\begin{table}[!b]
+\centering
+\begin{tabularx}{0.8\textwidth}{r | l}
+\toprule
+\textbf{In} & \textbf{Out}
+\\ \midrule
+parallel to the optical axis & through back focal point \\
+through the centre of lens & travel unchanged \\
+through the front focal point & parallel to the optical axis \\
+\bottomrule
+\end{tabularx}
+\label{tbl:rules}
+\caption{
+{\bf The three rules of ray tracing.}}
+\end{table}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Image formation}]
+Consider a point source far away ($>f$) from the lens. Use the rules in Table 1 to find where the image is formed. In the image plane, all rays originating from a point on the object converge at one point.
+
+Next, trace the rays from a second point source at the same object distance. Where is the image?
+\end{exercisebox}
+
+A convex lens will always form an image of an object $>f$ away, but the image distance and magnification will vary.
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Image formation}]
+Now trace the rays in the following scenarios:
+\begin{itemize}
+	\item a point source in the focal plane (but not at the focal point)
+	\item an object $2f$ away
+	\item an object $<f$ away
+\end{itemize}
+Is an image formed in the last scenario?
+\end{exercisebox}
+
+Image distance is given by:
+\begin{equation}
+	\frac{1}{\underbracket{s_i}_{\mathclap{\substack{\text{image} \\ \text{distance}}}}} = 
+	\frac{1}{f} + \frac{1}{\underbracket{s_o}_{\mathclap{\substack{\text{object} \\ \text{distance}}}}}
+\end{equation}
+Sign convention applies -- distances to the left of the lens are negative, those to the right are positive! Determine axial magnification -- consider the similar triangles formed by the ray going through the centre of the lens:
+\begin{equation}
+	M = \frac{\overbracket{h_i}^{\mathclap{\text{image size}}}}{\underbracket{h_o}_{\mathclap{\text{object size}}}} = \frac{s_i}{s_o} = \frac{f}{f + s_o}
+\end{equation}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Ray tracing with collimated sources}]
+Finally, let us look at how to trace rays with collimated sources. Consider the following scenarios:
+\begin{itemize}
+	\item parallel beam going through the focal point (we already saw this)
+	\item parallel beam going parallel to the optical axis but \textit{not} through the focal point
+	\item parallel beam hitting the lens at an angle
+\end{itemize}
+\end{exercisebox}
+
+\newpage
+\section{Lens systems}
+For a pair of lenses very close to each other (distance $z=0$), optical powers add:
+\begin{equation}
+	\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2}
+\end{equation}
+If $z>f_1+f_2$, an image formed by the first lens could act as the object for the second lens. What's the magnification of the whole system?
+\begin{equation}
+	M = M_1 \times M_2 = 
+	\frac{f_1}{f_1 + s_{o_1}} \times 
+	\frac{f_2}{f_2 + s_{o_2}}
+\end{equation}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Pair of lenses}]
+Take a pair lenses with $f_1=20$ mm and $f_2=30$ mm positioned $z=100$ mm apart. Trace the rays from an object at $s_{o_1}=40$ mm from the first lens.
+
+Is the image upright or inverted?
+\end{exercisebox}
+
+If the $s_{o_1} = f_1$ (the object is in the focal plane of the first lens), we have an \textbf{infinite conjugate system}. This is the most common arrangement you will encounter in microscopy.
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Infinite conjugate}]
+Repeat the exercise above but with an object at $s_{o_1}=f_1=20$ mm and placing the lenses $z=50$ mm apart.
+
+What happens when we change the distance $z$ between the lenses? Where is the image formed? Is it upright or inverted?
+\end{exercisebox}
+
+Magnification of an infinite conjugate system:
+\begin{equation}
+\label{eq:inf_conj}
+	M = - \frac{f_2}{f_1}
+\end{equation} 
+
+To form a \textbf{beam expander} we place the lenses at $z = f_1 + f_2$. Beam diameter is magnified according to Eq. \ref{eq:inf_conj}.
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Beam expander}]
+Take a colimated beam parallel to the optical axis and trace rays through a beam expander with $f_1=20$ mm and $f_2=40$ mm.
+\begin{itemize}
+	\item What happens if $z < f_1 + f_2$?
+	\item And if $z > f_1 + f_2$?
+\end{itemize}
+\end{exercisebox}
+
+\section{Concave lenses}
+The ray tracing rules for concave or diverging lenses are different and are summarized in Table 2. A concave lens on its own can only form virtual images.
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Beam expander with a concave lens}]
+Design a beam expander using a convex and a concave lens. What is its magnification? Is there an advantage over the design with a pair of concave lenses?
+\end{exercisebox}
+\begin{table}[b]
+\centering
+\begin{tabularx}{1\textwidth}{r | l}
+\toprule
+\textbf{In} & \textbf{Out}
+\\ \midrule
+parallel to the optical axis & coming \textbf{from} the front focal point \\
+through the centre of lens & travel unchanged \\
+going toward the \textbf{back} focal point & parallel to the optical axis \\
+\bottomrule
+\end{tabularx}
+\label{tbl:concave}
+\caption{
+{\bf The rules of ray tracing for concave lenses.}}
+\end{table}
+\end{document}
