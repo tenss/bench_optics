@@ -1,0 +1,67 @@
+\documentclass[a4paper]{report}
+\usepackage{amsmath,mathrsfs,amsfonts}
+\usepackage{mathtools}
+\usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2.5cm]{geometry} 
+\addtocounter{chapter}{1}
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\renewcommand{\thefigure}{\@arabic\c@figure}
+\makeatother
+
+\begin{document}
+\section{}
+\subsection{Estimating gain using shot noise}
+Before we continue, we need to arm ourselves with the definition of \textit{expectation} or \textit{expected value} of a random variable. 
+The expectation of $f(x)$, a function of a discrete random variable $x$ with a probability distribution $p(x)$ is given by
+\begin{equation}
+\mathbb {E} [f] = \sum _{x} p(x) f(x)
+\end{equation}
+In the simplest case, if $f(x) = x$, then $\mathbb {E} [x] = \sum _{x} p(x) x$. 
+In practice, we often do not have access to the full probability distribution $p(x)$ and have to resort to approximating the expectation as the empirical mean:
+\begin{equation}
+\mathbb { E } [ f ] \simeq \frac { 1 } { N } \sum _ { n = 1 } ^ { N } f \left( x _ { n } \right).
+\end{equation}
+A key property of expectations is their linearity. That is
+\begin{align}
+\mathbb{E}[x+y] &= \mathbb{E}[x] + \mathbb{E}[y], \textrm{and } \\
+\mathbb{E}[ax] & = a \mathbb{E}[x], \label{eq:lin}
+\end{align}
+where $a$ is a constant. The last piece of information we need is the definition of variance in terms of expectations:
+\begin{equation}
+	\mathrm{var}(x) = \mathbb{E}[(x - \mathbb{E}[x])^2] = \mathbb{E}[x^2] - \mathbb{E}[x]^2
+\end{equation}
+The first identity is true by definition, and the second can be easily demonstrated by expanding the square. With definitions out of the way, we can now derive 
+\begin{align}
+	\mathrm{var}(c) & = \mathbb{E}[(c - \mathbb{E}[c])^2] \\
+	& = \mathbb{E}[(\alpha p - \mathbb{E}[\alpha p])^2] \\ 
+	& = \mathbb{E}[(\alpha p - \alpha \mathbb{E}[p] )^2] \label{eq:ref1} \\ 
+	& = \alpha^2 \mathbb{E}[(p - \mathbb{E}[p])^2] \label{eq:ref2} \\ 
+	& = \alpha^2 \mathrm{var}(p) = \alpha^2 \mathbb{E}[p] \label{eq:ref3} \\
+	& = \alpha\mathbb{E}[c].
+\end{align}
+Eqs. \ref{eq:ref1} and \ref{eq:ref2} took advantage of the linear properties of expectations, specifically Eq. \ref{eq:lin}, and Eq. \ref{eq:ref3} of the fact that $p$ is Poisson distributed, and hence its variance and expected value are equal. Thus we see that the variance of image values due to shot noise increases proportionally to its mean, with a constant of proportionality equal to the gain $\alpha$, the conversion factor from photoelectrons to gray levels.
+
+\subsection{Contribution of readout noise}
+The derivation is a little more tiresome if we take into account that fact that the measured image values are the sum of the amplified photon counts and readout noise $\epsilon$:
+\begin{equation}
+	c = \alpha p + \epsilon.
+\end{equation}
+Here $\epsilon$ is a new random variable and is statistically independent from $c$ and $p$. With this revised definition, 
+\begin{align}
+	\mathrm{var}(c) & = \mathbb{E}[(\alpha p + \epsilon - \mathbb{E}[\alpha p + \epsilon ])^2] \\
+	& = \mathbb{E}[(\alpha p + \epsilon - \alpha \mathbb{E}[p] - \mathbb{E}[\epsilon])^2].
+\end{align}
+Expanding the square and collecting all the terms that depend linearly on $\epsilon$ and then expanding the expectation, we get:
+\begin{align}
+	\mathrm{var}(c) & = \mathbb{E}[\alpha^2 p^2 - 2\alpha^2 p\mathbb{E}[p] +\alpha^2\mathbb{E}[p]^2 + \epsilon^2 - \mathbb{E}[\epsilon]^2 + \epsilon(\ldots)]\\
+	& =  \mathbb{E}[\alpha^2(p - \mathbb{E}[p])^2] + \mathbb{E}[\epsilon^2] - \mathbb{E}[\epsilon]^2 + \mathbb{E}[\epsilon]\mathbb{E}[(\ldots)] \\
+	& = \alpha^2 \mathbb{E}[(p - \mathbb{E}[p])^2] + \mathrm{var}(\epsilon),
+\end{align}
+where we took advantage of the fact that $\mathbb{E}[\epsilon^2] - \mathbb{E}[\epsilon]^2 = \mathrm{var}(\epsilon)$, that and $\mathbb{E}[\epsilon]=0$, and that $p$ and $\epsilon$ are independent. Finally, noting that $\mathbb{E}[(p - \mathbb{E}[p])^2] = \mathrm{var}(p)$,
+\begin{align}
+	\mathrm{var}(c) & = \alpha^2 \mathrm{var}(p) + \mathrm{var}(\epsilon) \\
+	& = \alpha^2 \mathbb{E}[p] + \mathrm{var}(\epsilon) \\
+	& = \alpha\mathbb{E}[c] + \mathrm{var}(\epsilon)
+\end{align}
+So, if we plot the variance of image values versus its mean, the intercept will be the read-out noise variance -- in units of gray levels. We can use our estimate of the gain $\alpha$ to convert it into photoelectrons, as given in the spec sheet. Note that we assumed that the offset has been corrected, otherwise $\mathbb{E}[\epsilon] \neq 0$.
+\end{document}
