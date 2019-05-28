@@ -2,6 +2,10 @@
 \usepackage{amsmath,mathrsfs,amsfonts}
 \usepackage{mathtools}
 \usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2.5cm]{geometry} 
+\usepackage{mdframed}
+
+\newcommand{\nexercise}[0]{\arabic{exercises}\addtocounter{exercises}{1}}
+
 \addtocounter{chapter}{1}
 \makeatletter
 \renewcommand{\thesection}{\@arabic\c@section}
@@ -9,7 +13,40 @@
 \makeatother
 
 \begin{document}
-\section{}
+\newcounter{exercises}
+\addtocounter{exercises}{1}
+\newmdenv[linewidth=2pt,
+frametitlerule=true,
+roundcorner=10pt,
+linecolor=red,
+leftline=false,
+rightline=false,
+skipbelow=12pt,
+skipabove=12pt,
+nobreak=true,
+innerbottommargin=7pt,
+]{exercisebox}
+
+\begin{center}
+\textbf{\Large{Detectors and noise}}
+\end{center}
+\section{Photodetectors}
+\subsection{Quantum efficiency}
+\subsection{CCD and CMOS cameras}
+Well depth
+\subsection{Photomultiplier tubes}
+Current integration vs photon counting
+\section{Sources of noise in imaging}
+\subsection{Readout noise}
+
+Offset
+
+Dynamic range
+\subsection{Shot noise}
+Effect of background on SNR
+
+\subsection{Dark noise}
+
 \subsection{Estimating gain using shot noise}
 Before we continue, we need to arm ourselves with the definition of \textit{expectation} or \textit{expected value} of a random variable. 
 The expectation of $f(x)$, a function of a discrete random variable $x$ with a probability distribution $p(x)$ is given by
@@ -64,4 +101,30 @@ where we took advantage of the fact that $\mathbb{E}[\epsilon^2] - \mathbb{E}[\e
 	& = \alpha\mathbb{E}[c] + \mathrm{var}(\epsilon)
 \end{align}
 So, if we plot the variance of image values versus its mean, the intercept will be the read-out noise variance -- in units of gray levels. We can use our estimate of the gain $\alpha$ to convert it into photoelectrons, as given in the spec sheet. Note that we assumed that the offset has been corrected, otherwise $\mathbb{E}[\epsilon] \neq 0$.
+
+\section{Practical}
+\begin{exercisebox}[frametitle={Exercise \nexercise: Measure readout noise}]
+Acquire a sequence of images ($\sim100$) from the camera with NO light hitting the detector. 
+
+Hint: Cover the camera and shorten the exposure time as much as possible ($\sim1$ ms). Measure the standard deviation of each pixel’s value across the movie (use ImageJ). 
+What is the average noise (standard deviation in counts) across pixels? 
+\end{exercisebox}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Measure dark counts}]
+- Acquire images from the camera with NO light hitting the detector using a range of short and long exposure times.
+- Measure the Mean number of counts in each image. Do the counts increase with increasing exposure time? How many counts/pixel/second do you observe? 
+Hint: Remember to subtract the ‘Bias Level’, the average value (in counts) appearing in the image following a 0 second exposure. (This is an ‘offset’ added to each image by the camera manufacturers and does not reflect the incident light level.) 
+\end{exercisebox}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Compute the dynamic range of the camera}]
+- Determine the camera’s full well capacity (saturation value) in counts after bias removal. 
+:: Use a long exposure and expose the camera to a bright light source. What value are ‘saturated pixels’ assigned? 
+- Use the below formula to compute the camera’s Dynamic Range (the number of individually discernible light levels) for a fixed exposure. 
+
+Dynamic Range = (Saturation – Dark Counts) / Read-out Noise
+
+Note: Use bias subtracted values for both Saturation and Dark counts.
+
+- Compare your results to the camera’s technical specification sheet. 
+\end{exercisebox}
 \end{document}
