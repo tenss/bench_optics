@@ -9,7 +9,7 @@
 \renewcommand{\thefigure}{\@arabic\c@figure}
 \makeatother
 \newcommand{\nexercise}[0]{\arabic{exercises}\addtocounter{exercises}{1}}
-
+\usepackage[a4paper,margin=2.7cm,tmargin=2.5cm,bmargin=2cm]{geometry} 
 \begin{document}
 \setcounter{secnumdepth}{2}
 
@@ -20,7 +20,7 @@
 
 \newcounter{exercises}
 \addtocounter{exercises}{1}
-\newmdenv[linewidth=2pt,
+\newmdenv[linewidth=1pt,
 frametitlerule=true,
 roundcorner=10pt,
 linecolor=red,
