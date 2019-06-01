@@ -69,14 +69,21 @@ Photon counting is only feasible and useful in the low light regime, when overla
 
 As discussed earlier, PMTs have lower achievable quantum efficiencies than silicon-based detectors. 
 Their advantage comes from the fact that the amplification cascade allows them to reliably detect single photons above noise levels (which we will discuss shortly). 
-In addition, they have a large surface area, which can be useful, as you'll see when designing and building the light path for two-photon microscopes later.
+In addition, they have a large surface area, which can be useful, as you'll see when designing and building the light path for two-photon microscopes later. 
+Different regions of the photocathode can differ in their sensitivity, which has to be taken into account when designing microscopes.
 
 \section{Sources of noise in imaging}
-\subsection{Readout noise}
-Readout noise originates from the electronics that convert photoelectrons into binary data. 
-Since readout noise fluctuations can be both positive and negative, it is important to apply an offset to avoid clipping negative values, which would result in a biased measurement.
+\subsection{Read-out noise}
+Read-out noise originates from the electronics that convert photoelectrons into binary data. 
+Since read-out noise fluctuations can be both positive and negative, it is important to apply an offset to avoid clipping negative values, which would result in a biased measurement.
 
-Dynamic range
+Read-out noise is typically specified in units of charge -- i.e. multiples of the charge of the electron. 
+Together with the full well capacity it determines the \textit{dynamic range} of the sensor -- the maximum number of readily distinguishable gray levels. 
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Picking optimal gain}]
+How should we pick the amplification and digitization gain to maximize dynamic range, given the level of read-out noise?
+\end{exercisebox}
+
 \subsection{Shot noise}
 Shot noise is a direct consequence of the quantum nature of light. While we may be interested in light intensity (e.g. as a proxy for the concentration of a fluorescent protein), we only observe discrete photons. 
 While the underlying \textit{rate} of generation and detection of photons may be constant, the number of photons we observe in a given time window will vary, following the Poisson distribution.
@@ -87,36 +94,46 @@ So why then do we have the intuition that images ``become less noisy'' as we inc
 The reason is that although the variance increases, the signal-to-noise ratio (SNR) also goes up. 
 SNR is typically quantified and the mean of the signal divided by its standard deviation. 
 Since the standard deviation of the photon count due to shot noise is equal to the square root of the variance, it increases slower than the mean. 
-Therefore, SNR goes up in proportion to the
+Therefore, SNR goes up in proportion to the square root of the mean photon count.
+
+
 
 \subsection{Dark noise}
+Dark noise arises from generation of electrons in a photon-independent fashion. 
+Since it is also a Poisson process, it has the same statistical properties as shot noise. 
+Dark noise can be controlled by cooling the sensor.
 
 \subsection{Estimating gain using shot noise}
 While numbers of photons detected by the camera follow the Poisson distribution, the camera does not output raw photon counts.
 Instead the image values it generates will be proportional to the actual numbers of photons with a proportionality constant we refer to as gain.
 Formally,
 \begin{equation}
-	c = \alpha p,
+	\underbracket{c}_{\mathclap{\text{image value}}} = \alpha \overbracket{p}^{\mathclap{\text{photon count}}},
 \end{equation} 
-where $c$ is the image value, $p$ is the number of detected photon, and $\alpha$ is the gain.
-Therefore, the units of gain are gray values per photon. 
+where $\alpha$ is the total gain.
+The units of gain are gray values per photon. 
 
 Before we continue, we need to arm ourselves with the definition of \textit{expectation} or \textit{expected value} of a random variable. 
 The expectation of $f(x)$, a function of a discrete random variable $x$ with a probability distribution $p(x)$ is given by
 \begin{equation}
-\mathbb {E} [f] = \sum _{x} p(x) f(x)
+\mathbb {E} [f] = \sum _{x} p(x) f(x),
 \end{equation}
 In the simplest case, if $f(x) = x$, then $\mathbb {E} [x] = \sum _{x} p(x) x$. 
 In practice, we often do not have access to the full probability distribution $p(x)$ and have to resort to approximating the expectation as the empirical mean:
 \begin{equation}
-\mathbb { E } [ f ] \simeq \frac { 1 } { N } \sum _ { n = 1 } ^ { N } f \left( x _ { n } \right).
+\mathbb { E } [ x ] \simeq \frac { 1 } { N } \sum _ { n = 1 } ^ { N } x _{n}.
 \end{equation}
+
+\begin{exercisebox}[frametitle={Exercise \nexercise: Expectation example}]
+What is the expected value of a six-sided dice roll? 
+\end{exercisebox}
+
 A key property of expectations is their linearity. That is
 \begin{align}
 \mathbb{E}[x+y] &= \mathbb{E}[x] + \mathbb{E}[y], \textrm{and } \\
 \mathbb{E}[ax] & = a \mathbb{E}[x], \label{eq:lin}
 \end{align}
-where $a$ is a constant. The last piece of information we need is the definition of variance in terms of expectations:
+where $a$ is a constant (i.e. not a random variable). The last piece of information we need is the definition of variance in terms of expectations:
 \begin{equation}
 	\mathrm{var}(x) = \mathbb{E}[(x - \mathbb{E}[x])^2] = \mathbb{E}[x^2] - \mathbb{E}[x]^2
 \end{equation}
@@ -131,8 +148,8 @@ The first identity is true by definition, and the second can be easily demonstra
 \end{align}
 Eqs. \ref{eq:ref1} and \ref{eq:ref2} took advantage of the linear properties of expectations, specifically Eq. \ref{eq:lin}, and Eq. \ref{eq:ref3} of the fact that $p$ is Poisson distributed, and hence its variance and expected value are equal. Thus we see that the variance of image values due to shot noise increases proportionally to its mean, with a constant of proportionality equal to the gain $\alpha$, the conversion factor from photoelectrons to gray levels.
 
-\subsection{Contribution of readout noise}
-The derivation is a little more tiresome if we take into account that fact that the measured image values are the sum of the amplified photon counts and readout noise $\epsilon$:
+\subsection{Contribution of read-out noise}
+The derivation is a little more tiresome if we take into account that fact that the measured image values are the sum of the amplified photon counts and read-out noise $\epsilon$:
 \begin{equation}
 	c = \alpha p + \epsilon.
 \end{equation}
@@ -156,7 +173,7 @@ where we took advantage of the fact that $\mathbb{E}[\epsilon^2] - \mathbb{E}[\e
 So, if we plot the variance of image values versus its mean, the intercept will be the read-out noise variance -- in units of gray levels. We can use our estimate of the gain $\alpha$ to convert it into photoelectrons, as given in the spec sheet. Note that we assumed that the offset has been corrected, otherwise $\mathbb{E}[\epsilon] \neq 0$.
 
 \section{Practical}
-\begin{exercisebox}[frametitle={Exercise \nexercise: Measure readout noise}]
+\begin{exercisebox}[frametitle={Exercise \nexercise: Measure read-out noise}]
 Acquire a sequence of images ($\sim100$) from the camera with NO light hitting the detector. 
 
 Hint: Cover the camera and shorten the exposure time as much as possible ($\sim1$ ms). Measure the standard deviation of each pixel’s value across the movie (use ImageJ). 
@@ -171,10 +188,11 @@ Hint: Remember to subtract the ‘Bias Level’, the average value (in counts) a
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Compute the dynamic range of the camera}]
 First determine the camera’s full well capacity (saturation value) in counts after bias removal. 
-:: Use a long exposure and expose the camera to a bright light source. What value are ‘saturated pixels’ assigned? 
-- Use the below formula to compute the camera’s Dynamic Range (the number of individually discernible light levels) for a fixed exposure. 
-
-Dynamic Range = (Saturation – Dark Counts) / Read-out Noise
+Use a long exposure and expose the camera to a bright light source. What value are ‘saturated pixels’ assigned? 
+Use the formula below to compute the camera’s \textit{dynamic range} (the number of individually discernible light levels) for a fixed exposure. 
+\begin{center}
+Dynamic Range = (Saturation –- Dark counts) / Read-out noise
+\end{center}
 
 Note: Use bias subtracted values for both Saturation and Dark counts.
 
@@ -186,7 +204,15 @@ Acquire sequences of images (~100) with the camera exposed to a wide distributio
 \begin{itemize}
 	\item Use a range of pixel intensities within an image: structured sample illuminated at a fixed intensity. Use ImageJ to measure the mean and standard deviation for each pixel across the image sequence.
 	\item Use a range of illumination intensities: same pixel, across different LED currents. Use ImageJ or your favourite programming language to measure the mean and standard deviation of a select pixel across the images acquired at various illumination intensities.
-\end{itemize}
+\end{itemize}
 Use 1 second exposure time for either option. The illumination light must be stable; use an LED in an enclosed container (to avoid background changes). 
+
+Plot the variance, i.e. standard deviation squared (Y axis) vs. mean (X axis) for different brightness levels. Fit a line. 
+Determine the detector’s gain (counts per photoelectron): 
+
+Hint: Remember to subtract out the ‘Bias Level’ measured above.
+Note: The slope of the line will be the “Gain” of your camera.
+
+Where does the fit line intersect the y-axis? Does this make sense? 
 \end{exercisebox}
 \end{document}
