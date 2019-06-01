@@ -36,11 +36,11 @@ Let us first consider the steps involved in converting a photon falling onto ima
 \begin{itemize}
 	\item \textbf{Photoelectric effect:} the probability that an absorbed photon will be converted into a photoelectron (or initiate a photochemical reaction, in the case of photographic film) is the \textit{quantum efficiency} of the detector.
 	\item \textbf{Amplification:} the charge associated with the generated photoelectrons is converted into a voltage that we can measure. 
-	\item \textbf{Analog-to-digital conversion:} the voltage is measured by an ADC, giving rise to binary data that can be stored or manipulated by computers.
+	\item \textbf{Analog-to-digital conversion:} the voltage is measured by an ADC, giving rise to binary data that can be stored or manipulated by computers. The \textit{bit depth} of the digitizer will determine maximum image value that can be acquired.
 \end{itemize}
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Quantum efficiency of different materials}]
-In recent decades, photomultiplier tubes and silicon based detectors (photodiodes and cameras) have replaced film and the primary devices used for measuring light.
+In recent decades, photomultiplier tubes and silicon based detectors (photodiodes and cameras) have replaced film as the primary means for measuring light.
 How do you think the quantum efficiency of these materials compares? 
 Which is the lowest and which is the highest?
 \end{exercisebox}
@@ -81,7 +81,7 @@ Read-out noise is typically specified in units of charge -- i.e. multiples of th
 Together with the full well capacity it determines the \textit{dynamic range} of the sensor -- the maximum number of readily distinguishable gray levels. 
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Picking optimal gain}]
-How should we pick the amplification and digitization gain to maximize dynamic range, given the level of read-out noise?
+How should we pick the amplification and digitization gain to maximize dynamic range, given the level of read-out noise and a fixed bit depth?
 \end{exercisebox}
 
 \subsection{Shot noise}
