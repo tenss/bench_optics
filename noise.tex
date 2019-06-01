@@ -125,7 +125,7 @@ In practice, we often do not have access to the full probability distribution $p
 \end{equation}
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Expectation example}]
-What is the expected value of a six-sided dice roll? 
+If heads is 1 and tails is 0, what is the expected value of a coin flip? What about a six-sided dice roll? 
 \end{exercisebox}
 
 A key property of expectations is their linearity. That is
@@ -133,7 +133,7 @@ A key property of expectations is their linearity. That is
 \mathbb{E}[x+y] &= \mathbb{E}[x] + \mathbb{E}[y], \textrm{and } \\
 \mathbb{E}[ax] & = a \mathbb{E}[x], \label{eq:lin}
 \end{align}
-where $a$ is a constant (i.e. not a random variable). The last piece of information we need is the definition of variance in terms of expectations:
+where $a$ is a constant (i.e. not a random variable). The last piece of information we need is the definition of variance in terms of expectations. It is the expected value of the squared deviations from the mean, $\mathbb{E}[x]$:
 \begin{equation}
 	\mathrm{var}(x) = \mathbb{E}[(x - \mathbb{E}[x])^2] = \mathbb{E}[x^2] - \mathbb{E}[x]^2
 \end{equation}
