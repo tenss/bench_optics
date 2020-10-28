@@ -81,22 +81,45 @@ Read-out noise is typically specified in units of charge -- i.e. multiples of th
 Together with the full well capacity it determines the \textit{dynamic range} of the sensor -- the maximum number of readily distinguishable gray levels. 
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Picking optimal gain}]
-How should we pick the amplification and digitization gain to maximize dynamic range, given the level of read-out noise and a fixed bit depth?
+How should we pick the amplification and digitization gain to maximize dynamic range, given the level of read-out noise and a fixed bit depth? E.g. what would be the gain to pick if our RMS read out is $10e^-$?
 \end{exercisebox}
 
 \subsection{Shot noise}
 Shot noise is a direct consequence of the quantum nature of light. While we may be interested in light intensity (e.g. as a proxy for the concentration of a fluorescent protein), we only observe discrete photons. 
 While the underlying \textit{rate} of generation and detection of photons may be constant, the number of photons we observe in a given time window will vary, following the Poisson distribution.
 
-The Poisson distribution has an interesting property in that its mean, corresponding in this case to the underlying rate of photons, is equal to its variance.
+The Poisson distribution has an interesting property in that its mean, often written as $\lambda$, corresponding in this case to the underlying rate of photons, is equal to its variance:
+\begin{equation}
+	\lambda = \sigma^2
+\end{equation}
+Or, if you prefer the more formal language of expected values,
+\begin{align}
+	\lambda = \mathbb { E } [ x ] = \mathrm { Var } ( x )  = \mathbb { E } [ (x - \mathbb { E } [ x ])^2 ],
+\end{align}
+where $x$ is the Poisson distributed photon counts.
+
 This means that as average number of photon events increases, for example with light intensity or exposure time, so does the variability of photon counts due to shot noise.
 So why then do we have the intuition that images ``become less noisy'' as we increase the amount of light? 
 The reason is that although the variance increases, the signal-to-noise ratio (SNR) also goes up. 
-SNR is typically quantified and the mean of the signal divided by its standard deviation. 
+SNR is typically quantified and the mean of the signal divided by its standard deviation:
 Since the standard deviation of the photon count due to shot noise is equal to the square root of the variance, it increases slower than the mean. 
 Therefore, SNR goes up in proportion to the square root of the mean photon count.
+\begin{equation}
+	SNR = \frac{\lambda}{\sigma} = \frac{\lambda}{\sqrt{\lambda}} = \sqrt{\lambda}
+\end{equation}
 
-
+\begin{exercisebox}[frametitle={Exercise \nexercise: Why can’t we see the Milky Way from London?}]
+Both signal (stars) and background (sky glow from light pollution) contain shot noise, and both contribute to the variance of the observed photon counts:
+\begin{align}
+\sigma_{total}^2 = \sigma_{signal}^2 + \sigma_{background}^2 \\
+=\lambda_{signal} + \lambda_{background}
+\end{align}
+However, of course of the signal helps increase the SNR:
+\begin{align}
+SNR &= \frac{\lambda_{signal}}{\sigma_{total}} \\
+    &= \frac{\lambda_{signal}}{\sqrt{\lambda_{signal} + \lambda_{background}}} 	
+\end{align}
+\end{exercisebox}
 
 \subsection{Dark noise}
 Dark noise arises from generation of electrons in a photon-independent fashion. 
@@ -105,14 +128,14 @@ Dark noise can be controlled by cooling the sensor.
 
 \subsection{Estimating gain using shot noise}
 While numbers of photons detected by the camera follow the Poisson distribution, the camera does not output raw photon counts.
-Instead the image values it generates will be proportional to the actual numbers of photons with a proportionality constant we refer to as gain.
-Formally,
+Instead the image values it generates will be proportional to the actual numbers of photons with a proportionality constant we refer to as gain:
 \begin{equation}
 	\underbracket{c}_{\mathclap{\text{image value}}} = \alpha \overbracket{p}^{\mathclap{\text{photon count}}},
 \end{equation} 
 where $\alpha$ is the total gain.
 The units of gain are gray values per photon. 
 
+\subsubsection{Proof using expected values}
 Before we continue, we need to arm ourselves with the definition of \textit{expectation} or \textit{expected value} of a random variable. 
 The expectation of $f(x)$, a function of a discrete random variable $x$ with a probability distribution $p(x)$ is given by
 \begin{equation}
@@ -148,7 +171,7 @@ The first identity is true by definition, and the second can be easily demonstra
 \end{align}
 Eqs. \ref{eq:ref1} and \ref{eq:ref2} took advantage of the linear properties of expectations, specifically Eq. \ref{eq:lin}, and Eq. \ref{eq:ref3} of the fact that $p$ is Poisson distributed, and hence its variance and expected value are equal. Thus we see that the variance of image values due to shot noise increases proportionally to its mean, with a constant of proportionality equal to the gain $\alpha$, the conversion factor from photoelectrons to gray levels.
 
-\subsection{Contribution of read-out noise}
+\subsubsection{Contribution of read-out noise}
 The derivation is a little more tiresome if we take into account that fact that the measured image values are the sum of the amplified photon counts and read-out noise $\epsilon$:
 \begin{equation}
 	c = \alpha p + \epsilon.
