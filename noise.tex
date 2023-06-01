@@ -195,15 +195,15 @@ where we took advantage of the fact that $\mathbb{E}[\epsilon^2] - \mathbb{E}[\e
 \end{align}
 So, if we plot the variance of image values versus its mean, the intercept will be the read-out noise variance -- in units of gray levels. We can use our estimate of the gain $\alpha$ to convert it into photoelectrons, as given in the spec sheet. Note that we assumed that the offset has been corrected, otherwise $\mathbb{E}[\epsilon] \neq 0$.
 
-\section{Practical}
+\section{Noise Practical}
 In this practical you will measure the noise characteristics of your camera. 
-If you are using a Basler camera, you will have control over acquisition parameters such as offset and gain. 
+You will have control over acquisition parameters such as offset and gain. 
 It is important that you set these to reasonable values before you begin. 
 The relevant settings in \textit{pylon} software are:
 \begin{itemize}
 	\item \textbf{Pixel format:} determines the bit depth. Set to \textbf{12 Bits/Pixel}.
 	\item \textbf{Blank level:} sets the camera offset and is 0 by default. Set it to a positive value to make sure you are not clipping -- use the histogram feature with the camera cap closed to check.
-	\item \textbf{Gain:} self-explanatory, set to its maximum value -- 24 dB -- to start with.
+	\item \textbf{Gain:} self-explanatory, set to its minimum value -- 0 dB -- to start with.
 	\item \textbf{Exposure auto:} set to ``Off''.
 	\item \textbf{Exposure time:} self-explanatory.
 \end{itemize}
