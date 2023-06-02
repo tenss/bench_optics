@@ -31,33 +31,41 @@ innerbottommargin=7pt,
 In this practical you will measure the noise characteristics of your camera. 
 You will have control over acquisition parameters such as offset and gain. 
 It is important that you set these to reasonable values before you begin. 
-The relevant settings in \textit{SpinView} software are:
+The relevant settings in \textit{Pylon} software are:
 \begin{itemize}
-	\item \textbf{Pixel format:} determines the bit depth. Set to Mono16 so that you can use the full 12 bit bitdepth of the camera.
-	\item \textbf{Black level:} sets the camera offset and is 0 by default. Set it to a positive value to make sure you are not clipping -- use the histogram feature with the camera cap closed to check.
+	\item \textbf{Pixel format:} determines the bit depth. Set to Mono12 so that you can use the full 12-bit depth of the camera (the software will expand the 12-bit values to a 16-bit number when saving the image. \textit{What range of digital values do expect in your images?}
+	\item \textbf{Black level:} sets the camera offset and is 0 by default. Set it to a positive value (5 is a good choice) to make sure you are not clipping the noise at zero.
 	\item \textbf{Gain:} set to its minimum value -- 0 dB -- to start with and set \textbf{Gain Auto} to \textit{None}.
 	\item \textbf{Exposure auto:} set to ``Off''.
 	\item \textbf{Exposure time:} self-explanatory.
 	\item \textbf{Gamma enable:} untick to disable gamma correction.
 \end{itemize}
 
-To quickly find these settings, select the Features tab and use the textbox to search for them. 
-
 \textbf{Important:} Save images in a lossless format, e.g. uncompressed TIFF.
 
+\textbf{Also Important:} To save multiple images, as individual TIFFs, you must set the "folder path" where the images will be saved. This can be changed in the Window--Recording Settings menu.
+
+
 \begin{exercisebox}[frametitle={Exercise \nexercise: Measure read-out noise}]
-
-
-Acquire a sequence of images ($\sim100$) from the camera with NO light hitting the detector. 
-
-Hint: Cover the camera and shorten the exposure time as much as possible ($\sim1$ ms). Measure the standard deviation of each pixel’s value across the movie (use ImageJ). 
-What is the average noise (standard deviation in counts) across pixels? 
+- Acquire a sequence of images ($\sim100$) from the camera with NO light hitting the detector.
+\linebreak
+\linebreak
+Hint: Cover the camera and shorten the exposure time as much as possible ($\sim20$ us). Measure the mean and standard deviation of all pixels' values across the movie (use ImageJ--Image--Stacks--Z Project: Average Intensity or STD projection). 
+What is the average \textit{bias} (mean value in counts) across all pixels? What is the average \textit{noise} (standard deviation in counts) across all pixels? 
 \end{exercisebox}
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Measure dark counts}]
-- Acquire images from the camera with NO light hitting the detector using a range of short and long exposure times.
-- Measure the Mean number of counts in each image. Do the counts increase with increasing exposure time? How many counts/pixel/second do you observe? 
+\begin{flushleft}
+- Acquire images from the camera with NO light hitting the detector using a range of exposure times.
+\linebreak
+- Measure the mean number of counts in each image. Do the counts increase with increasing exposure time? How many counts/pixel/second do you observe? Does the dark count rate change with temperature?
+\linebreak
+\linebreak
 Hint: Remember to subtract the ‘Bias Level’, the average value (in counts) appearing in the image following a 0 second exposure. (This is an ‘offset’ added to each image by the camera manufacturers and does not reflect the incident light level.) 
+\linebreak
+\linebreak
+Warning: The Basler cameras do not seem to add the user specified "black level" for exposures longer than 1 second. Either use longer exposures and assume a bias of zero, or compensate accordingly. 
+\end{flushleft}
 \end{exercisebox}
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Compute the dynamic range of the camera}]
@@ -74,12 +82,12 @@ Compare your results to the camera’s technical specification sheet.
 \end{exercisebox}
 
 \begin{exercisebox}[frametitle={Exercise \nexercise: Measure shot noise}]
-Acquire sequences of images ($\sim 100$) with the camera exposed to a wide distribution of brightness values. You can do this in two ways:
+Acquire sequences of images ($\sim 100$) with the camera exposed to a range of brightness values. You can do this in two ways:
 \begin{itemize}
 	\item Use a range of pixel intensities within an image: structured sample illuminated at a fixed intensity. Use ImageJ to measure the mean and standard deviation for each pixel across the image sequence.
 	\item Use a range of illumination intensities: same pixel, across different LED currents. Use ImageJ or your favourite programming language to measure the mean and standard deviation of a select pixel across the images acquired at various illumination intensities.
 \end{itemize}
-Use 1 second exposure time for either option. The illumination light must be stable; use an LED in an enclosed container (to avoid background changes). 
+Use <1 second exposure times for either option. The illumination light must be stable; use an LED in an enclosed container (to avoid background changes). 
 
 Plot the variance, i.e. standard deviation squared (Y axis) vs. mean (X axis) for different brightness levels. Fit a line. 
 Determine the detector’s gain (counts per photoelectron): 
@@ -90,3 +98,4 @@ Note: The slope of the line will be the “Gain” of your camera.
 Where does the fit line intersect the y-axis? Does this make sense? 
 \end{exercisebox}
 \end{document}
+ 
