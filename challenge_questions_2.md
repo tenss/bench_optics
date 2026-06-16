@@ -3,7 +3,7 @@
 A good answer does three things:
 
 1. **Explains how the technique works**: Build the explanation from the optical principles we have covered.
-2. **Connects it to the course**: Name the underlying ideas (e.g. diffraction limit, conjugate planes) and show how the technique exploits or works around them.
+2. **Connects it to the course**: Name the underlying ideas (e.g., diffraction limit, conjugate planes) and show how the technique exploits or works around them.
 3. **States when it gives an advantage**: Under what experimental conditions (e.g., sample type, required resolution, speed, depth, photodamage) you would actually reach for this method instead of a simpler one, and what you trade away to get there.
 
 > **A word of caution**: Be wary of diagrams you find online: many are wrong, oversimplified. Reason from first principles and from the lecture material.
